@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "f6ec93e0-79b0-481a-9c2b-6741195c0e90": {
+      "type": "image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/side-view-people-gardening-together_1280x768_a7017d3c-1b14-40bb-90a7-77c51b889443.jpg",
+        "link": "",
+        "open_in_new_window": false,
+        "image_size": "large"
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1",
+        "image_aspect_ratio": "1.33333",
+        "display_type": "all",
+        "sort": "alphabetical"
+      }
+    }
+  },
+  "order": [
+    "f6ec93e0-79b0-481a-9c2b-6741195c0e90",
+    "main"
+  ]
+}

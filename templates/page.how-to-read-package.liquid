@@ -1,0 +1,68 @@
+ {{ 'photoswipe.css' | asset_url | stylesheet_tag }} 
+  <script src="{{ 'photoswipe-lightbox.umd.min.js' | asset_url }}" defer></script> 
+  <script src="{{ 'photoswipe.umd.min.js' | asset_url }}" defer></script> 
+    <script src="{{ 'package-zoom.js' | asset_url }}" defer></script> 
+  
+
+<div class="container--large  container--vertical-space">
+   {%- if localization.language.iso_code == 'en' -%}
+
+          <div class="grid grid--layout grid-2 pswp-gallery" id="my-gallery">
+            <a class="image-link"
+              href="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-front-en-new.png?v=1693581884"
+              data-pswp-width="1600"
+              data-pswp-height="1200"
+              target="_blank"
+            >
+              <img 
+                src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-front-en-new.png?v=1693581884"
+        
+                alt="Package Front"
+              />
+            </a>
+            <a class="image-link"
+              href="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-back-en-new.png?v=1693581884"
+              data-pswp-width="1600"
+              data-pswp-height="1200"
+              target="_blank"
+            >
+              <img
+                src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-back-en-new.png?v=1693581884"
+            
+                alt="Package Back"
+              />
+            </a>
+          </div>
+  
+    
+    {%- else -%}
+
+      <div class="grid grid--layout grid-2 pswp-gallery" id="my-gallery">
+            <a class="image-link"
+              href="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-front-fr-new.png?v=1693581884"
+              data-pswp-width="1600"
+              data-pswp-height="1200"
+              target="_blank"
+            >
+              <img 
+                src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-front-fr-new.png?v=1693581884"
+        
+                alt="Package Front"
+              />
+            </a>
+            <a class="image-link"
+              href="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-back-fr-new.png?v=1693581884"
+              data-pswp-width="1600"
+              data-pswp-height="1200"
+              target="_blank"
+            >
+              <img
+                src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/how-to-read-package-back-fr-new.png?v=1693581884"
+            
+                alt="Package Back"
+              />
+            </a>
+          </div>
+     {%- endif -%}
+  
+</div>

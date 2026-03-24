@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "alignment": "horizontal-left align-content--vertical-bottom",
+        "color_background_main": "#000000",
+        "color_text_main": "#ffffff"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "quick_buy": {
+          "type": "quick_buy",
+          "settings": {}
+        },
+        "36b2f579-c05a-4d38-83a9-f42ae982fc99": {
+          "type": "rating",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price",
+        "title",
+        "quick_buy",
+        "36b2f579-c05a-4d38-83a9-f42ae982fc99"
+      ],
+      "settings": {
+        "products_number": 24,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}

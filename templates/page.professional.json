@@ -1,0 +1,141 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "center": false
+      }
+    },
+    "1e71f9cb-b7e8-463d-b514-713df662086a": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16476823519482__1e71f9cb-b7e8-463d-b514-713df662086a-1667441435db38c1db-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Hortinova is a supplier of high-quality vegetable seeds for professional and semi-professional Canadian growers. The Canadian horticultural sector is a thriving industry that is constantly expanding and is a key contributor to Canada's economy. According to the latest figures, over 50% of Canadian households grow their own vegetables at home. Professional greenhouse vegetable production is one of the booming agri-food sectors and continues to develop by adopting new technological innovations, particularly in the field of organic cultivation, hydroponic systems, and urban farms. In every province and territory in Canada, professional field vegetable growers are constantly improving their practices using new technology and techniques to ensure optimal efficiency and quality. <\/p>",
+            "text_size": "regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--16476823519482__1e71f9cb-b7e8-463d-b514-713df662086a-1667441435db38c1db-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "regular",
+        "image": "shopify:\/\/shop_images\/asian-mother-daughter-are-helping-together-collect-fresh-hydroponic-vegetable-farm-concept-gardening-kid-education-household-agricultural-family-life-style_6bfabd37-6a04-4f5e-ba39-5daa39608046.jpg",
+        "image_position": "right",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "#19212c",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "3cf9403e-8c67-41e6-a32e-a002d4c687c6": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "",
+        "full_width": false
+      }
+    },
+    "72c219b6-4cb2-4258-a2b6-9761451da30c": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16476823519482__72c219b6-4cb2-4258-a2b6-9761451da30c-1667876996f1b842d3-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Although the seasonal nature of field vegetable production in Canada leads the country to be a net importer of vegetables to fulfill Canadian demand year-round, horticultural export continues to increase yearly in part thanks to the innovative cutting-edge technologies that allow Canadian greenhouse cultivation to increase production quality and yield of various crops and to respond throughout the year to the demands of more seasoned domestic and international consumers. It is also remarkable that an increasing number of Canadian households grow their own food indoors thus ensuring access to fresh produce for an extended period of the year.<\/p>",
+            "text_size": "regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--16476823519482__72c219b6-4cb2-4258-a2b6-9761451da30c-1667876996f1b842d3-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "regular",
+        "image": "shopify:\/\/shop_images\/farmer-picking-up-fresh-ripe-tomato-vegetables-putting-into-wooden-crate.jpg",
+        "image_position": "left",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "#19212c",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "8045801d-eef2-41ca-a147-ece961e885db": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16476823519482__8045801d-eef2-41ca-a147-ece961e885db-16678770754689738b-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Canadian horticulture is a vibrant, dynamic, and diverse industry and is in a constant state of development. It continually introduces innovative varieties to meet the changing consumer preferences and requirements especially in terms of organic, environmentally friendly, and tasty products. Stemming from that inspiring energy, Hortinova was established with a mission to contribute to the development of that flourishing industry. Hortinova strives to introduce to the Canadian market novel vegetable varieties from international breeding and seed producing companies and supply farmers and gardeners with high-quality varieties selected not only for their quality, productivity, and disease resistance but above all consumer taste satisfaction. <\/p>",
+            "text_size": "regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--16476823519482__8045801d-eef2-41ca-a147-ece961e885db-16678770754689738b-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "regular",
+        "image": "shopify:\/\/shop_images\/market-gardening_e1472894-215a-4ad6-b7c6-c21cb640e3e3.jpg",
+        "image_position": "right",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "#19212c",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "615b533d-5a29-4718-9fae-7715926d6532": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16476823519482__615b533d-5a29-4718-9fae-7715926d6532-1667877156b3bd3db3-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We believe, as the saying goes, that to plant a seed is to believe in tomorrow. <\/p><p>We trust that you will find in us your reliable partner in seed and that, together, we can farm for the future.​<\/p>",
+            "text_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "template--16476823519482__615b533d-5a29-4718-9fae-7715926d6532-1667877156b3bd3db3-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "regular",
+        "image_position": "top no-image",
+        "image_crop": true,
+        "text_alignment": "horizontal-center",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1e71f9cb-b7e8-463d-b514-713df662086a",
+    "3cf9403e-8c67-41e6-a32e-a002d4c687c6",
+    "72c219b6-4cb2-4258-a2b6-9761451da30c",
+    "8045801d-eef2-41ca-a147-ece961e885db",
+    "615b533d-5a29-4718-9fae-7715926d6532"
+  ]
+}

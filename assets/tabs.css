@@ -1,0 +1,292 @@
+.product-tabs {
+  margin-top:30px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight:700;
+}
+.fancyTab {
+	text-align: center;
+    background-color: #eee;
+  	box-shadow: 0 0 0 1px #ddd;
+  	top:15px;	
+    transition: top .2s;
+}
+
+.fancyTab.active {
+  top:0;
+  transition:top .2s;
+}
+.whiteBlock {
+  display:none;
+}
+
+.fancyTab.active .whiteBlock {
+  display:block;
+  height:2px;
+  bottom:-2px;
+  background-color:#fff;
+  width:99%;
+  position:absolute;
+  z-index:1;
+}
+
+.tab.fancyTab a .arrow-down {
+    display: none;
+}
+.tab.fancyTab.selected a .arrow-down{
+    display: block;
+}
+.tab.fancyTab.selected  {
+  height: 134px;
+}
+.fancyTab a {
+	font-size:1.65em;
+	font-weight:300;
+    transition:.2s;
+    color:#333;
+    text-transform: uppercase;
+}
+.tab.fancyTab a span {
+  margin-top: 5px;
+}
+.tab.fancyTab a .img {
+    display: block;
+}
+.tab.fancyTab a .img-hover {
+    display: none;
+}
+.tab.fancyTab.selected a {
+  color: #008080
+}
+.tab.fancyTab.selected a .img {
+    display: none;
+}
+.tab.fancyTab.selected a .img-hover {
+    display: block;
+}
+.fancyTabs {
+	border-bottom:2px solid #ddd;
+    margin: 15px 0 0;
+     display: flex;
+}
+li.fancyTab {
+  position: relative;
+}
+li.fancyTab a {
+    width: 100%;
+    height: 100%;
+    DISPLAY: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+li.fancyTab.active a {
+  padding-top: inherit;
+}
+.fancyTab .fa {
+  font-size: 40px;
+	width:100%;
+	padding: 15px 0 5px;
+  color:#666;
+}
+.fancyTab.active .fa {
+  color: #cfb87c;
+}
+.fancyTab a:focus {
+	outline: none;
+}
+.fancyTabContent {
+  border-color: transparent;
+  box-shadow: 0 -2px 0 -1px #fff, 0 0 0 1px #ddd;
+  padding: 30px 15px 15px;
+  position:relative;
+  background-color:#fff;
+}
+.nav-tabs > li.fancyTab.active > a, 
+.nav-tabs > li.fancyTab.active > a:focus,
+.nav-tabs > li.fancyTab.active > a:hover {
+	border-width:0;
+}
+
+.nav-tabs > li.fancyTab:hover {
+	background-color:#f9f9f9;
+	box-shadow: 0 0 0 1px #ddd;
+}
+
+.nav-tabs > li.fancyTab.active:hover {
+  background-color:#fff;
+  box-shadow: 1px 1px 0 1px #fff, 0 0px 0 1px #ddd, -1px 1px 0 0px #ddd inset;
+}
+
+/*.nav-tabs > li.fancyTab:hover a {
+	border-color:transparent;
+}*/
+
+.nav.nav-tabs .fancyTab a[data-toggle="tab"] {
+  background-color:transparent;
+  border-bottom:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.fancyTab a[data-toggle="tab"] img {
+    width: 50px;
+    height: 50px;
+}
+
+/*.nav-tabs > li.fancyTab:hover a {
+  border-right: 1px solid transparent;
+}*/
+
+.nav-tabs > li.fancyTab > a {
+	margin-right:0;
+	border-top:0;
+   padding-bottom: 30px;
+   margin-bottom: -30px;
+}
+
+.nav-tabs > li.fancyTab {
+	margin-right:0;
+	margin-bottom:0;
+}
+
+.nav-tabs > li.fancyTab:last-child a {
+  border-right: 1px solid transparent;
+}
+
+.nav-tabs > li.fancyTab.active:last-child {
+  border-right: 0px solid #ddd;
+	box-shadow: 0px 2px 0 0px #fff, 0px 0px 0 1px #ddd;
+}
+
+.fancyTab:last-child {
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+.tabs .nav-tabs li.fancyTab.active a {
+	box-shadow:none;
+  top:0;
+}
+
+
+.fancyTab.active {
+  background: #fff;
+	box-shadow: 1px 1px 0 1px #fff, 0 0px 0 1px #ddd, -1px 1px 0 0px #ddd inset;
+  padding-bottom:30px;
+}
+.tab-pane.active {
+  outline: none!important;
+}
+.arrow-down {
+	display:none;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 22px solid #ddd;
+  position: absolute;
+  top: -1px;
+  left: calc(50% - 20px);
+}
+
+.arrow-down-inner {
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 12px solid #fff;
+  position: absolute;
+  top: -22px;
+  left: -18px;
+}
+
+.fancyTab.active .arrow-down {
+  display: block;
+}
+
+@media (max-width: 1200px) {
+  
+  .fancyTab .hidden-xs {
+    font-size:22px;
+	}
+		
+}
+	
+	
+@media (max-width: 992px) {
+    
+ 
+  .fancyTab .hidden-xs {
+  	font-size:18px;
+    font-weight:normal;
+  }
+		
+}
+	
+	
+@media (max-width: 768px) {
+    
+  .fancyTab > a {
+    font-size:18px;
+  }
+    
+  .nav > li.fancyTab > a {
+    padding:15px 0;
+    margin-bottom:inherit;
+  }
+    
+  .fancyTab .fa {
+    font-size:30px;
+  }
+    
+  .nav-tabs > li.fancyTab > a {
+    border-right:1px solid transparent;
+    padding-bottom:0;
+  }
+    
+  .fancyTab.active .fa {
+    color: #333;
+	}
+		
+}
+
+/*  This ul class defines how your menu options
+    will be arranged and also gives us a nice 
+    dividing line between the menu and the content. */
+ul.tabs {
+    text-align: center;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    line-height: 26px;
+    color: #0088CC;
+    border-bottom: 1px solid #DDDDDD;
+  margin-top: 50px;
+}
+
+/* This defines what a tab should look like when selected */
+ul.tabs li.selected {
+    background: #FFF;
+    border-bottom-color: transparent;
+
+}
+/* This defines how a tab looks when your mouse hovers above it */
+ul.tabs li:hover {
+    color: #333333;
+    cursor: pointer;
+    background: #FFFFFF;
+}
+
+/*  This centers all of the text within a page element */
+div.page {
+ margin: 60px 40px;
+}
+/*  This overrides the text centering we defined above if
+    the text is within a list and also tells your browser
+    not to put bullet points next to the text. */
+div.page li {
+    text-align: left;
+    list-style-type: none;
+}

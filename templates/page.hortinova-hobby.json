@@ -1,0 +1,521 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "center": false
+      }
+    },
+    "slideshow_pRJBBa": {
+      "type": "slideshow",
+      "blocks": {
+        "image_AeQFFe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slider_1.jpg",
+            "caption": "",
+            "title": "In every seed lies a promise,",
+            "link": "https:\/\/shop.hortinova.ca\/collections\/gardening-seeds",
+            "button_label": "Show more",
+            "color_background_main": "#e1e1e1",
+            "color_text_main": "#ffffff"
+          }
+        },
+        "image_qFRwCT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slider_2.jpg",
+            "caption": "",
+            "title": "of life, of hope, of brighter days.",
+            "link": "https:\/\/shop.hortinova.ca\/collections\/gardening-seeds",
+            "button_label": "Show more",
+            "color_background_main": "#e1e1e1",
+            "color_text_main": "#ffffff"
+          }
+        },
+        "image_grmd4f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slider_3.jpg",
+            "caption": "",
+            "title": "With care and time, it grows and blossoms,",
+            "link": "https:\/\/shop.hortinova.ca\/collections\/gardening-seeds",
+            "button_label": "Show more",
+            "color_background_main": "#e1e1e1",
+            "color_text_main": "#ffffff"
+          }
+        },
+        "image_YDRrPn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slider_5.jpg",
+            "caption": "",
+            "title": "rooted in purpose, balanced and deep.",
+            "link": "https:\/\/shop.hortinova.ca\/collections\/gardening-seeds",
+            "button_label": "Show more",
+            "color_background_main": "#e1e1e1",
+            "color_text_main": "#ffffff"
+          }
+        },
+        "image_UA9WKG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slider_4.jpg",
+            "caption": "",
+            "title": "From backyard to table, we share warm moments",
+            "link": "https:\/\/shop.hortinova.ca\/collections\/gardening-seeds",
+            "button_label": "Show more",
+            "color_background_main": "#e1e1e1",
+            "color_text_main": "#ffffff"
+          }
+        },
+        "image_CfAPMg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slider_6.jpg",
+            "caption": "",
+            "title": "As memories bloom, we farm for the future",
+            "link": "https:\/\/shop.hortinova.ca\/collections\/gardening-seeds",
+            "button_label": "Show more",
+            "color_background_main": "#e1e1e1",
+            "color_text_main": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_AeQFFe",
+        "image_qFRwCT",
+        "image_grmd4f",
+        "image_YDRrPn",
+        "image_UA9WKG",
+        "image_CfAPMg"
+      ],
+      "settings": {
+        "desktop_height": "40vh",
+        "mobile_height": "40vh",
+        "alignment": "horizontal-left align-content--vertical-bottom",
+        "text_size": "regular",
+        "title_size": "h2",
+        "button_size": "large",
+        "button_style": "solid",
+        "is_fullwidth": false
+      }
+    },
+    "rich_text_XLwc7G": {
+      "type": "rich-text",
+      "blocks": {
+        "title_UniPMd": {
+          "type": "title",
+          "settings": {
+            "title": "Hortinova and Solynta Partner to Bring Hybrid True Potato Seed Innovation to Canadian Gardeners",
+            "title_size": "h3"
+          }
+        },
+        "text_h7BJKf": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br\/>In a major stride for Canadian home gardening, Solynta—a leader in true potato seed (TPS) breeding—has teamed up with Hortinova to bring hybrid TPS innovations to Canadian garden enthusiasts. Their collaboration centers on the launch of SUNBITE F1, a late-blight-resistant baby potato variety, now available to gardeners across Canada this season. By offering true potato seeds like SUNBITE F1 through Hortinova’s established distribution channels—ranging from retail garden centers to online platforms—this initiative empowers Canadian gardeners to cultivate genetically robust, disease-resistant potatoes with all the convenience of seed planting.<br\/><br\/><\/p>",
+            "text_size": "regular"
+          }
+        },
+        "button_pgpqRA": {
+          "type": "button",
+          "settings": {
+            "button_label": "Discover SUNBITE F1",
+            "link": "shopify:\/\/products\/sunbite-f1-hybrid-true-potato-seed-gardening-farming",
+            "button_size": "large",
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "title_UniPMd",
+        "text_h7BJKf",
+        "button_pgpqRA"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "height": "small",
+        "image": "shopify:\/\/shop_images\/Solynta_Seeds.jpg",
+        "image_position": "top",
+        "image_crop": true,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": false,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "#19212c",
+        "color_borders_main": "#ffffff",
+        "color_hide_borders": false
+      }
+    },
+    "featured_collection_FJHA3z": {
+      "type": "featured-collection",
+      "blocks": {
+        "price_k4iwq7": {
+          "type": "price",
+          "settings": {}
+        },
+        "title_dnfEPN": {
+          "type": "title",
+          "settings": {}
+        },
+        "quick_buy_q4dNbW": {
+          "type": "quick_buy",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price_k4iwq7",
+        "title_dnfEPN",
+        "quick_buy_q4dNbW"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "heading": "PATIO COLLECTION",
+        "subheading": "Big harvests in small spaces – compact veggies perfect for pots and patios.",
+        "show_view_all": true,
+        "style": "grid",
+        "products_number": 8,
+        "collection": "patio-collection"
+      }
+    },
+    "featured_collection_EMcbb6": {
+      "type": "featured-collection",
+      "blocks": {
+        "price_edFfNn": {
+          "type": "price",
+          "settings": {}
+        },
+        "title_yjHfpW": {
+          "type": "title",
+          "settings": {}
+        },
+        "quick_buy_LKhYrJ": {
+          "type": "quick_buy",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price_edFfNn",
+        "title_yjHfpW",
+        "quick_buy_LKhYrJ"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "heading": "Garden Classics Collection",
+        "subheading": "From juicy tomatoes to hearty pumpkins, discover a wide range of vegetable varieties to grow, harvest, and enjoy in your own backyard.",
+        "show_view_all": true,
+        "style": "grid",
+        "products_number": 8,
+        "collection": "gardening-seeds"
+      }
+    },
+    "rich_text_My3U3h": {
+      "type": "rich-text",
+      "blocks": {
+        "title_TNBwFX": {
+          "type": "title",
+          "settings": {
+            "title": "Our Quality",
+            "title_size": "h2"
+          }
+        },
+        "text_Li7wk7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>All our seeds are tested by a CFIA-accredited seed laboratory prior to release to ensure lots comply with applicable regulations. We take the utmost care to provide only high grade seeds with the highest germination possible.<br\/><br\/>The test results and dates of each seed lot are communicated openly on our website and of course on the seed packets.<\/p><p>All our seeds are NON-GMO and chemical free<\/p>",
+            "text_size": "regular"
+          }
+        },
+        "button_WmRTwt": {
+          "type": "button",
+          "settings": {
+            "button_label": "About Us",
+            "link": "shopify:\/\/pages\/about-us",
+            "button_size": "large",
+            "button_style": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "title_TNBwFX",
+        "text_Li7wk7",
+        "button_WmRTwt"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "small",
+        "image": "shopify:\/\/shop_images\/seed-germination-tips_14ed3fb2-bcf6-40c1-8ca9-76e07f4443ad.jpg",
+        "image_position": "left",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": false,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "rich_text_tPynpn": {
+      "type": "rich-text",
+      "blocks": {
+        "title_JBKtdr": {
+          "type": "title",
+          "settings": {
+            "title": "Our Packaging",
+            "title_size": "h2"
+          }
+        },
+        "text_JWRW8n": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>High-end material that stands out in the market.<\/li><\/ul><p><\/p><ul><li>Versatile packaging and branding for local hobby and professional markets as well as for export.<\/li><\/ul><p><\/p><ul><li>Packets made of aluminum barrier film and heat-sealed to protect the seeds from relative humidity, water and ultraviolet rays.<\/li><\/ul><p><\/p><ul><li>Resealable bags with zipper to allow users to store seeds safely for later sowing.<\/li><\/ul><p><\/p><ul><li>Seeds are placed inside a translucent glassine bag used as a liner to prevent accidental seed spillage and aid in handling.<\/li><\/ul>",
+            "text_size": "regular"
+          }
+        },
+        "button_DDydHH": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn more",
+            "link": "shopify:\/\/pages\/how-to-read-our-package",
+            "button_size": "large",
+            "button_style": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "title_JBKtdr",
+        "text_JWRW8n",
+        "button_DDydHH"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "small",
+        "image": "shopify:\/\/shop_images\/49.PALOMA-F1.jpg",
+        "image_position": "right",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "rich_text_WYUTmA": {
+      "type": "rich-text",
+      "blocks": {
+        "title_HDprV6": {
+          "type": "title",
+          "settings": {
+            "title": "Reseller Offer",
+            "title_size": "h2"
+          }
+        },
+        "text_bJLHkE": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Ask about our wholesale program<\/h4><p>Hortinova is an innovative company in the seed sector with a fresh look at market trends.<\/p><p>We are committed to respecting our partners' requirements and building lasting relationships of trust.<br\/><br\/>For all inquiries related to products and distribution opportunities, please do not hesitate to contact us. We would love to partner with you and become one of your reliable suppliers.<\/p>",
+            "text_size": "regular"
+          }
+        },
+        "button_At7BWN": {
+          "type": "button",
+          "settings": {
+            "button_label": "Contact Us",
+            "link": "shopify:\/\/pages\/contact",
+            "button_size": "large",
+            "button_style": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "title_HDprV6",
+        "text_bJLHkE",
+        "button_At7BWN"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "small",
+        "image": "shopify:\/\/shop_images\/04.Hortinova_Display_Double_2.png",
+        "image_position": "left",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "rich_text_QkHhfP": {
+      "type": "rich-text",
+      "blocks": {
+        "title_gDrCnD": {
+          "type": "title",
+          "settings": {
+            "title": "Our Display",
+            "title_size": "h2"
+          }
+        },
+        "text_yWFkpJ": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>If you're looking to combine an effective sales tool with environmentally friendly materials, look no further, as we have exactly what you need.<\/li><\/ul><p><\/p><ul><li>Made 100% from cardboard by a Quebec-based company, this floor display stands out for its lightness compared to metal or wooden displays, making it incredibly convenient to transport.<\/li><\/ul><p><\/p><ul><li>Featuring a capacity of 25 compartments that can hold up to 750 packets, it strikes the perfect balance between functional diversity and captivating aesthetics. Its modular design, both understated and impactful, has been meticulously crafted to grab the consumer's attention. Highly adaptable to different store settings, it transforms into an indispensable asset in the retail space.<\/li><\/ul><p><\/p><ul><li>Once in your possession, you can customize it by assembling your own assortment, thus offering an exceptional variety of species and varieties to your gardening enthusiasts. Rest assured that both amateurs and connoisseurs will be delighted!<\/li><\/ul>",
+            "text_size": "regular"
+          }
+        },
+        "button_hRzHhj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn more",
+            "link": "shopify:\/\/products\/floor-display",
+            "button_size": "large",
+            "button_style": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "title_gDrCnD",
+        "text_yWFkpJ",
+        "button_hRzHhj"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "small",
+        "image": "shopify:\/\/shop_images\/Hortinova3DA.png",
+        "image_position": "right",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "3cf9403e-8c67-41e6-a32e-a002d4c687c6": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "",
+        "full_width": false
+      }
+    },
+    "72c219b6-4cb2-4258-a2b6-9761451da30c": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16476823519482__72c219b6-4cb2-4258-a2b6-9761451da30c-1667876996f1b842d3-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Although the seasonal nature of field vegetable production in Canada leads the country to be a net importer of vegetables to fulfill Canadian demand year-round, horticultural export continues to increase yearly in part thanks to the innovative cutting-edge technologies that allow Canadian greenhouse cultivation to increase production quality and yield of various crops and to respond throughout the year to the demands of more seasoned domestic and international consumers. It is also remarkable that an increasing number of Canadian households grow their own food indoors thus ensuring access to fresh produce for an extended period of the year.<\/p>",
+            "text_size": "regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--16476823519482__72c219b6-4cb2-4258-a2b6-9761451da30c-1667876996f1b842d3-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "regular",
+        "image": "shopify:\/\/shop_images\/farmer-picking-up-fresh-ripe-tomato-vegetables-putting-into-wooden-crate.jpg",
+        "image_position": "left",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "#19212c",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "8045801d-eef2-41ca-a147-ece961e885db": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16476823519482__8045801d-eef2-41ca-a147-ece961e885db-16678770754689738b-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Canadian horticulture is a vibrant, dynamic, and diverse industry and is in a constant state of development. It continually introduces innovative varieties to meet the changing consumer preferences and requirements especially in terms of organic, environmentally friendly, and tasty products. Stemming from that inspiring energy, Hortinova was established with a mission to contribute to the development of that flourishing industry. Hortinova strives to introduce to the Canadian market novel vegetable varieties from international breeding and seed producing companies and supply farmers and gardeners with high-quality varieties selected not only for their quality, productivity, and disease resistance but above all consumer taste satisfaction. <\/p>",
+            "text_size": "regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--16476823519482__8045801d-eef2-41ca-a147-ece961e885db-16678770754689738b-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "regular",
+        "image": "shopify:\/\/shop_images\/market-gardening_e1472894-215a-4ad6-b7c6-c21cb640e3e3.jpg",
+        "image_position": "right",
+        "image_crop": false,
+        "text_alignment": "horizontal-left",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "#19212c",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "615b533d-5a29-4718-9fae-7715926d6532": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16476823519482__615b533d-5a29-4718-9fae-7715926d6532-1667877156b3bd3db3-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We believe, as the saying goes, that to plant a seed is to believe in tomorrow. <\/p><p>We trust that you will find in us your reliable partner in seed and that, together, we can farm for the future.​<\/p>",
+            "text_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "template--16476823519482__615b533d-5a29-4718-9fae-7715926d6532-1667877156b3bd3db3-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "regular",
+        "image_position": "top no-image",
+        "image_crop": true,
+        "text_alignment": "horizontal-center",
+        "is_fullwidth": false,
+        "remove_margin": true,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_hide_borders": true
+      }
+    },
+    "judgeme_carousel_section_qieeYn": {
+      "type": "judgeme_carousel_section",
+      "settings": {
+        "maxwidth": 1080
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_pRJBBa",
+    "rich_text_XLwc7G",
+    "featured_collection_FJHA3z",
+    "featured_collection_EMcbb6",
+    "rich_text_My3U3h",
+    "rich_text_tPynpn",
+    "rich_text_WYUTmA",
+    "rich_text_QkHhfP",
+    "3cf9403e-8c67-41e6-a32e-a002d4c687c6",
+    "72c219b6-4cb2-4258-a2b6-9761451da30c",
+    "8045801d-eef2-41ca-a147-ece961e885db",
+    "615b533d-5a29-4718-9fae-7715926d6532",
+    "judgeme_carousel_section_qieeYn"
+  ]
+}

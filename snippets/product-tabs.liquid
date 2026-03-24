@@ -1,0 +1,79 @@
+   <link rel="stylesheet" href="{{ 'tabs.css' | asset_url }}">
+   <script src="{{ 'tabs.js' | asset_url }}" defer></script>
+
+<div class="product-tabs container container--large container--vertical-space-small grid grid--layout grid--gap-xlarge grid--no-stretch">
+
+  <section id="fancyTabWidget" class="tabs t-tabs">
+     
+
+    <div class="tabbed-menu">
+        <ul class="tabs fancyTabs">
+            <li class="selected tab fancyTab" id="sowing">
+
+                  <a  data-toggle="tab">
+                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>	
+                    <img class="img" src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/sowing.svg?v=1666964878">
+                     <img class="img-hover" src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/sowing-hover.svg?v=1666965081" />
+                    <span class="hidden-xs">{{ 'products.grid.Sowing' | t }}  </span>
+                  </a>
+                  <div class="whiteBlock"></div>
+            </li>
+            <li class="tab fancyTab" id="grow">  
+                        <a  data-toggle="tab">
+                           <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                          <img class="img" src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/grow.svg?v=1665018454" />
+                          <img class="img-hover" src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/grow-hover.svg?v=1666920685" />
+                          <span class="hidden-xs">{{ 'products.grid.Grow' | t }} </span></a>
+                        <div class="whiteBlock"></div>
+            </li>
+            <li class="tab fancyTab" id="harvest">
+                        <a  data-toggle="tab" >
+                          <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                          <img class="img" src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/harvest.svg?v=1665018444"/>
+                          <img class="img-hover" src="https://cdn.shopify.com/s/files/1/0661/3922/6362/files/harvest-hover.svg?v=1666919565" />
+                          <span class="hidden-xs">{{ 'products.grid.Harvest' | t }}  </span></a>
+                        <div class="whiteBlock"></div>
+            </li>
+        </ul>
+        <div class="content page" id="sowing">
+          <div class="row">        	
+                <div class="col-md-12">
+                  {%- if localization.language.iso_code == 'en' -%}
+                     {{ product.metafields.global.sowing.value }}
+                    {%- else -%}
+                     {{ product.metafields.global.semis.value }}
+                   {%- endif -%}
+                </div>
+                
+            </div>
+        </div>
+        <div class="content page" id="grow">
+          <div class="row">        	
+                <div class="col-md-12">
+                   {%- if localization.language.iso_code == 'en' -%}
+                     {{ product.metafields.global.grow.value }}
+                      {%- else -%}
+                     {{ product.metafields.global.culture.value }}
+                   {%- endif -%}
+                </div>
+                
+            </div>
+        </div>
+        <div class="content page" id="harvest">
+            <div class="row">        	
+                <div class="col-md-12">
+                   {%- if localization.language.iso_code == 'en' -%}
+                     {{ product.metafields.global.harvest.value }}
+                     {%- else -%}
+                     {{ product.metafields.global.recolte.value }}
+                   {%- endif -%}
+                </div>
+                
+            </div>
+        </div>
+     </div>
+    </section>
+
+
+  
+</div>
