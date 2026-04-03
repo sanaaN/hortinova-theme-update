@@ -1,0 +1,127 @@
+.hidden { display: none!important; }
+/*.slideshow-button {
+  margin-top: 291px!important;
+}*/
+.announcement-bar a {
+  font-weight: 800!important;
+}
+#Subscribe-newsletter-template--16476823421178__1655112847aaa4cc50:hover {
+  background-color: #1A212C;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.announcement-bar, .announcement-bar a, .announcement-bar .localization-form__item-text {
+  font-size:13px;
+}
+.store-selector-list .store-selector-item .store-selector-item__body .gutter-bottom--regular.guter-top--small{
+  width: 200px!important;
+}
+#temp-announcement-bar {
+  text-align:center; 
+  min-height:40px; 
+  height: auto;
+  display:flex; 
+  align-items: center;
+  justify-content: center; 
+  background-color: #339999; 
+  color: #fff; 
+  font-size: 14px; 
+  font-weight: bold; 
+  padding: 10px;
+}
+.main-footer {
+  background-color: #19212C!important;
+}
+.main-footer a {
+    border-bottom:0!important;
+}
+.main-footer a:hover {
+  text-decoration: underline!important;
+}
+.footer-item__image {
+  width: 64%;
+}
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #008080;
+  border-radius: 20px;
+  color: #fff;
+  height: 60px;
+ font-family: "Roboto", sans-serif;
+font-size: 20px;
+font-weight: bold;
+}
+#about-us p , #services p {
+  text-align: justify;
+  line-height: 30px;
+}
+.coming-soon a {
+  color: #fff;
+  text-transform: capitalize;
+}
+.spr-icon  {
+    color: #FFAA52!important;
+}
+.star-rating__stars span svg > path {
+  fill:  #FFAA52!important;
+}
+.spr-starrating.spr-summary-starrating {
+  justify-content: flex-start!important;
+}
+.facets__summary, #main select, .sidebar select {
+  background: none!important;
+}
+.free_shipping {
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: #008080;
+}
+/*.grid.grid--layout.grid-3.grid-lap-1 .card__text .text-size--small ,
+.grid.grid--layout.grid-3.grid-lap-1 .card__text .text-size--regular{
+    display: none!important;
+}*/
+/********** How to read package start ************/
+.image-link img{
+  width: 100%;
+}
+.product-text .product-price--compare, .cart-item__price del {
+  color: #D04544;
+}
+.mobile-social-links{
+    
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+
+}
+@media (min-width: 1200px ){
+  figure.zoom {
+    background-position: 50% 50%;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+  figure.zoom img:hover {
+    opacity: 0;
+  }
+  figure.zoom img {
+    transition: opacity 0.5s;
+    display: block;
+    width: 100%;
+  }
+}
+.card__icon svg path {
+  stroke: #008080!important;
+}
+@media (max-width: 1200px ){
+    figure.zoom {
+      background:none!important;
+    }
+}
+
+/********** How to read package end ************/
