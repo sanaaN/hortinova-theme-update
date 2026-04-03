@@ -1,13 +1,23 @@
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{%- render 'lang-dir' -%}">
+<html class="no-js" lang="{{ request.locale.iso_code }}">
 <head>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYZVHB56R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KYZVHB56R4');
+</script>
 
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0">
 
 	{%- if settings.favicon -%}
-		<link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 48, height: 48 }}" type="image/png" />
+		<link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" type="image/png" />
 	{%- endif -%}
 
 	{%- capture seo_title -%}
@@ -24,12 +34,8 @@
 		<meta name="description" content="{{ page_description | escape }}">
 	{%- endif -%}
 
-  {%- liquid
-    render 'open-graph'
-    unless settings.disable_microdata 
-      render 'microdata-schema'
-    endunless
-  -%}
+	{%- render 'open-graph' -%}
+  {%- render 'microdata-schema' -%}
 
   <link rel="canonical" href="{{ canonical_url }}">
 
@@ -37,14 +43,15 @@
   {%- unless settings.headings_font.system? and settings.body_font.system? -%}
     <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
   {%- endunless -%}
-
-  {%- render 'head-preloader' -%}
+    
   {%- render 'head-variables' -%}
+  {%- render 'head-preloader' -%}
 
   {{ 'theme.css' | asset_url | stylesheet_tag }}
+   {{ 'theme-css-updates.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
 
 	{{ content_for_header }}
-
   <script>
     const rbi = [];
     const ribSetSize = (img) => {
@@ -84,43 +91,37 @@
   <noscript>
     <link rel="stylesheet" href="{{ 'theme-noscript.css' | asset_url }}">
   </noscript>
-
+ <script src="{{ 'jquery3.6.1.js' | asset_url }}" defer></script>
+  <script src="{{ 'js.cookie.js' | asset_url }}" type="text/javascript" defer></script>
+   <script src="{{ 'theme-custom.js' | asset_url }}" defer></script>
+  {% render 'judgeme_core' %}
+{% capture cur %}{% include "booster-currency" %}{% endcapture %}{% unless cur contains "Liquid error" %}{{ cur }}{% endunless %}
 </head>
 
-<body id="{{ page_title | handle }}" class="no-touchevents 
-  {% if customer %} customer-logged-in {% endif %} 
-  template-{{ template.name }} template-{{ template | replace: '.', ' ' | handle }} 
-  {% if settings.shadow_cards_x < 0 %} has-negative-shadow-x {% endif %}
-  {% if settings.shadow_cards_y < 0 %} has-negative-shadow-y {% endif %}
-  {% if settings.show_breadcrumb == false %} body--no-breadcrumb {% endif %}
-  {% unless settings.show_sidebars_scrollbar %} sidebars-has-scrollbars {% endunless %}
-">
-
-  <script type="text/javascript">
-    if ( 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch ) { document.querySelector('body').classList.remove('no-touchevents'); document.querySelector('body').classList.add('touchevents'); } 
-  </script>
+<body id="{{ page_title | handle }}" class="{% if customer %} customer-logged-in {% endif %} template-{{ template.name }} template-{{ template | replace: '.', ' ' | handle }} no-touchevents">
 
   <a href="#main" class="visually-hidden skip-to-content" tabindex="0" data-js-inert>{{ 'general.accessibility_labels.skip_to_content' | t }}</a>
-  <div id="screen-reader-info" aria-live="polite" class="visually-hidden"></div>
 
   {{ 'section-header.css' | asset_url | stylesheet_tag }}
-  {%- sections 'header-group' -%}
+  {%- section 'announcement-bar' -%}
 
+<div id="header-pro" class="hidden">
+   {% section 'header-pro' %}
+</div>
+<div id="header-hobby">
+   {%- section 'header' -%}
+</div>
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
-  {{ 'component-video.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'component-product-form.js' | asset_url }}" defer></script>
 
-  <main id="main" class="main-content 
-    {% if settings.product_card_align_buy %} main-content--align-product-items {% endif %}
-  ">
+  <main id="main" class="main-content" data-js-inert>
     {%- render 'breadcrumb' -%}
     {{ content_for_layout }}
   </main>
 
-  {%- sections 'footer-group' -%}
+  {%- section 'footer' -%}
   {%- section 'popups' -%}
   {%- section 'popup-age-verification' -%}
-  {%- section 'exit-intent-popup' -%}
   {%- section 'store-selector' -%}
   
   <script src="{{ 'component-modal.js' | asset_url }}" defer></script>
@@ -131,67 +132,58 @@
 
     KROWN = {
       themeName: "Local",
-      themeVersion: "3.2.1",
+      themeVersion: "1.0.6",
       settings: {
-        shop_money_format: '{{ shop.money_format | strip_html }}',
-        iso_code: '{% if settings.show_currency_codes %} {{ localization.country.currency.iso_code }}{% endif %}',
+        shop_money_format: '{{ shop.money_format }}',
         cart_action: "{{ settings.cart_action }}",
-        google_maps_api_key: "{{ settings.google_maps_api_key | strip_html }}",
+        google_maps_api_key: "{{ settings.google_maps_api_key }}",
         routes: {
           cart_url: "{{ routes.cart_url }}",
           cart_add_url: "{{ routes.cart_add_url }}",
           cart_change_url: "{{ routes.cart_change_url }}",
-          cart_update_url: "{{ routes.cart_update_url }}",
           predictive_search_url: "{{ routes.predictive_search_url }}",
           product_recommendations_url: "{{ routes.product_recommendations_url }}"
         },
         locales: {
           products_add_to_cart_button: `{{ 'products.page.add_to_cart_button' | t }}`,
-          products_preorder_button: `{{ 'products.page.preorder_button' | t }}`,
           products_sold_out_variant: `{{ 'products.page.inventory.sold_out_variant' | t }}`,
-          products_unavailable_variant: `{{ 'products.page.inventory.unavailable_variant' | t }}`, 
-          products_variant_required: `{{ 'products.grid.choose_variant_first' | t }}`,
-          products_one_product: `<span class="pill"><span class="pill__icon" aria-hidden="true">{%- render 'theme-symbols', icon: 'circle-time' -%}</span><span class="pill__text text-size--small">{{ 'products.page.inventory.one_product' | t }}</span></span>`,
-          products_few_products: `<span class="pill"><span class="pill__icon" aria-hidden="true">{%- render 'theme-symbols', icon: 'circle-time' -%}</span><span class="pill__text text-size--small">{{ 'products.page.inventory.few_products' | t }}</span></span>`,
-          products_many_products: `<span class="pill"><span class="pill__icon" aria-hidden="true">{%- render 'theme-symbols', icon: 'circle-checkmark' -%}</span><span class="pill__text text-size--small">{{ 'products.page.inventory.many_products' | t }}</span></span>`,
-          products_no_products: `<span class="pill"><span class="pill__icon" aria-hidden="true">{%- render 'theme-symbols', icon: 'circle-exclamation' -%}</span><span class="pill__text text-size--small">{{ 'products.page.inventory.no_products' | t }}</span></span>`,
-          products_preorder: `<span class="pill"><span class="pill__icon" aria-hidden="true">{%- render 'theme-symbols', icon: 'circle-exclamation' -%}</span><span class="pill__text text-size--small">{{ 'products.page.inventory.preorder' | t }}</span></span>`,
-          products_enough_products: `<span class="pill"><span class="pill__icon" aria-hidden="true">{%- render 'theme-symbols', icon: 'circle-checkmark' -%}</span><span class="pill__text text-size--small">{{ 'products.page.inventory.enough_products' | t }}</span></span>`,
+          products_unavailable_variant: `{{ 'products.page.inventory.unavailable_variant' | t }}`,
+          products_one_product: `{{ 'products.page.inventory.one_product' | t }}`,
+          products_few_products: `{{ 'products.page.inventory.few_products' | t }}`,
+          products_no_products: `{{ 'products.page.inventory.no_products' | t }}`,
+          products_preorder: `{{ 'products.page.inventory.preoder' | t }}`,
+          product_sku: `{{ 'products.page.sku' | t }}`,
+          product_barcode: `{{ 'products.page.barcode' | t }}`,
+          product_compare_price: `{{ 'products.page.sales_amount' | t: amount: '$SAVE_PRICE' }}`,
+          cart_add_error: `<span class="alert__icon">{%- render 'theme-symbols', icon: 'alert-error' -%}</span>{{ 'cart.add_error' | t }}`,
           cart_general_error: `{{ 'cart.general_error' | t }}`,
-          cart_announcement: `{{ 'general.accessibility_labels.item_added' | t }}`,
-          cart_discount_code_error: `<span class="alert alert--error text-size--small">{{ 'cart.discount_code_error' | t }}</span>`,
           store_selector_title_default: `{{ 'store_availability.store_selector.picking_up' | t }}`,
           store_selector_title_selected: `{{ 'store_availability.store_selector.my_store' | t }}`,
           store_selector_label: `{{ 'store_availability.store_selector.select_store_label' | t }}`,
           shipping_calculator_results_heading_one: `{{ 'cart.shipping_calculator.results_heading_one' | t }}`,
-          shipping_calculator_results_heading_multiple: `{{ 'cart.shipping_calculator.results_heading_multiple' | t }}`,
-          shipping_notice_remaining_to_free: `{{ 'cart.free_shipping_remaining_html' | t }}`,
-          shipping_notice_eligible_for_free: `{{ 'cart.free_shipping_eligible' | t }}`,
-          slider_next_button_label: `{{ 'general.accessibility_labels.next_slide' | t }}`,
-          slider_prev_button_label: `{{ 'general.accessibility_labels.previous_slide' | t }}`,
-          slider_thumbnail_label: `{{ 'general.accessibility_labels.slide' | t }}`
+          shipping_calculator_results_heading_multiple: `{{ 'cart.shipping_calculator.results_heading_multiple' | t }}`
         },
         symbols: {
           zoom_out: `{%- render 'theme-symbols', icon: 'zoom-out' -%}`,
+          zoom_in: `{%- render 'theme-symbols', icon: 'zoom-in' -%}`,
           zoom_loader: `<svg class="zoom__loader-element" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-width="4"/></svg>`,
           close: `{%- render 'theme-symbols', icon: 'close' -%}`,
           toggle_pack: `<span class="toggle__icon">{%- render 'theme-symbols', icon: 'chevron' -%}</span>`,
           toggle_pack_alternate: `<span class="toggle__icon-alternate"><span class="toggle__icon--plus">{%- render 'theme-symbols', icon: 'plus' -%}</span><span class="toggle__icon--minus">{%- render 'theme-symbols', icon: 'minus' -%}</span></span>`
         },
-        predictive_search_enabled: "true",
+        predictive_search_enabled: "{{ settings.predictive_search_enabled }}",
         predictive_search_script: "{{ 'component-predictive-search.js' | asset_url }}",
         predictive_search_placeholder: `<div class="search-results"><div class="search-block"><a class="search-item search-item--blank"><div class="thumbnail"></div><div class="content"><span class="title"></span><span class="caption"></span></div></a><a class="search-item search-item--blank"><div class="thumbnail"></div><div class="content"><span class="title"></span><span class="caption"></span></div></a><a class="search-item search-item--blank"><div class="thumbnail"></div><div class="content"><span class="title"></span><span class="caption"></span></div></a></div></div>`
-      },
-      functions: {
-        eventDispatcher: (eventType, detail) => {
-          document.dispatchEvent(new CustomEvent(eventType, {
-            bubbles: true,
-            detail: detail
-          }));
-        }
       }
     }
     
+	</script>
+
+	<script type="text/javascript">
+		if ( 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch ) {
+		  document.querySelector('body').classList.remove('no-touchevents');
+		  document.querySelector('body').classList.add('touchevents');
+		} 
 	</script>
 
   <script src="{{ 'component-quick-buy.js' | asset_url }}" defer></script>
@@ -200,12 +192,12 @@
   <script src="{{ 'component-slider.js' | asset_url }}" defer></script>
 
   {%- if request.design_mode -%}
-    <script src="{{ 'theme-editor.js' | asset_url }}" defer data-c="{{ shop.email }}" data-i="{{ shop.id }}" data-p="{{ settings.theme_preset }}"></script>
+    <script src="{{ 'theme-editor.js' | asset_url }}" defer></script>
   {%- endif -%}
   
-  {%- if settings.cart_action == "overlay" or template.name contains "cart" -%}
+  {%- unless settings.cart_action == "no-overlay" or template.name contains "cart" -%}
 
-    <sidebar-drawer id="site-cart-sidebar" class="sidebar sidebar--right {% if cart.item_count == 0 %} cart-is-empty {% endif %}" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true" data-cart-items="{{ cart.item_count }}" style="display:none" data-js-site-cart-sidebar>
+    <sidebar-drawer id="site-cart-sidebar" class="sidebar sidebar--right {% if cart.item_count == 0 %} cart-is-empty {% endif %}" tabindex="-1" role="dialog" aria-modal="true" data-cart-items="{{ cart.item_count }}" style="display:none">
       
       <div class="sidebar__header">
         <span class="sidebar__title h5">
@@ -218,134 +210,27 @@
         </button>
       </div>
 
-      <div class="sidebar__body sidebar__body--flex">
+      <div class="sidebar__body">
 
-        <div class="sidebar__body-top">
-          <div class="cart-form">
-            {%- render 'cart-form', type: 'sidebar' -%}
-            <a href="{{ routes.all_products_collection_url }}" class="cart-continue button button--fullwidth button--solid button--regular">
-              {{ 'cart.continue_browsing' | t }}
-            </a>
-          </div>
-
-          {%- if settings.cart_recommendations -%}
-            <cart-recommendations id="cart-recommendations" data-section="cart-recommendations" data-limit="6"></cart-recommendations>
-            <script src="{{ 'component-cart-recommendations.js' | asset_url }}" defer></script>
-          {%- endif -%}
+        <div class="cart-form sidebar-large-padding">
+          {%- render 'cart-form', type: 'sidebar' -%}
+          <a href="{{ routes.all_products_collection_url }}" class="cart-continue button button--fullwidth button--solid button--regular">
+            {{ 'cart.continue_browsing' | t }}
+          </a>
         </div>
 
-        {%- if settings.show_discount_code or settings.cart_notes_enable -%}
-
-          <div class="sidebar__body-bottom hide-if-empty-cart">
-
-            {%- if settings.cart_notes_enable -%}  
-              <div class="cart__instructions cart-detail--collapsible-{{ settings.show_collapsible_notes_discount }}">
-
-                {%- if settings.show_collapsible_notes_discount -%}
-                  <details class="cart__accordion-details">
-                    <summary class="align-content align-content--vertical-middle">
-                      <span class="cart__accordion-title cart__note-title">
-                        {{ 'cart.note' | t }}
-                      </span>
-
-                      <span class="cart__accordion-icon cart__note-icon" aria-hidden="true">
-                        {%- render 'theme-symbols', icon: 'chevron' -%}
-                      </span>
-                    </summary>
-                {%- endif -%}
-
-                  <div class="form-field">
-                    <cart-note>
-                      <label for="CartDrawer-Note" class="{% if settings.show_collapsible_notes_discount %}visually-hidden{% endif %}">
-                        {{ 'cart.note' | t }}
-                      </label>
-                      <textarea id="CartDrawer-Note" name="note">{{ cart.note }}</textarea>
-                    </cart-note> 
-                  </div>
-
-                {%- if settings.show_collapsible_notes_discount -%}
-                  </details>
-                {%- endif -%}
-
-              </div>
-            {%- endif -%}
-              
-            {%- if settings.show_discount_code -%}
-              <div class="cart-detail--collapsible-{{ settings.show_collapsible_notes_discount }}">
-                
-                {% liquid
-                  assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
-                  for item in cart.items
-                    for allocation in item.line_level_discount_allocations
-                      if allocation.discount_application.type == 'discount_code'
-                        assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
-                      endif
-                    endfor
-                  endfor
-
-                  assign discount_codes = discount_codes | uniq
-                %}
-                
-                {%- if settings.show_collapsible_notes_discount -%}
-                  <details class="cart__accordion-details">
-                    <summary class="align-content align-content--vertical-middle">
-                      <span class="cart__accordion-title cart__discount-title">
-                        {{ 'cart.discount_codes_label' | t }}
-                      </span>
-
-                      <span class="cart__accordion-icon cart__discount-icon" aria-hidden="true">
-                        {%- render 'theme-symbols', icon: 'chevron' -%}
-                      </span>
-                    </summary>
-                {%- endif -%}
-
-                <div class="form-field">
-                  <cart-discounts>
-                    <label for="CartPage-Discount" class="{%- if settings.show_collapsible_notes_discount -%}visually-hidden{%- endif -%}">
-                      {{ 'cart.discount_codes_label' | t }}
-                    </label>
-
-                    <form class="cart__coupons-form">
-                      <input id="CartPage-Discount" name="discount" type="text" data-js-discount-input>
-                      <button type="submit" id="cartDiscountSubmit" class="button button--small button--small-mobile button--solid" data-js-discount-submit>
-                        {{ 'collections.apply' | t }}
-                      </button>
-                    </form>
-
-                    {%- if settings.discount_text != blank -%}
-                      <div class="cart__coupons-label text-size--small text-color--opacity">
-                        {{ settings.discount_text | escape }}
-                      </div>
-                    {%- endif -%}
-
-                    <div class="cart__coupons-error" data-js-discount-error></div>
-
-                    <div class="cart__coupons-codes" data-js-discount-codes>
-                      {%- for discount_code in discount_codes -%}
-                        {%- render 'cart-item-discount', discount: discount_code, remove: true -%}
-                      {%- endfor -%}
-                    </div> 
-                  </cart-discounts>
-                </div>
-
-                {%- if settings.show_collapsible_notes_discount -%}
-                  </details>
-                {%- endif -%}
-
-              </div>
-            {%- endif -%}
-
+        {%- if settings.cart_notes_enable -%}
+          <div class="cart-instructions hide-if-empty-cart">
+            <div class="form-field">
+              <label for="cartSpecialInstructions">{{ 'cart.note' | t }}</label>
+              <textarea name="note" id="cartSpecialInstructions" = form="cart">{{ cart.note }}</textarea>
+            </div>
           </div>
-          
         {%- endif -%}
 
       </div>
-      
-      {%- render 'cart-gift-wrapping', class: 'cart-wrapping--sidebar' -%}
 
-      <div class="sidebar__footer hide-if-empty-cart" 
-        {% if settings.sticky_cart_actions %} style="position: sticky;" {% endif %}
-      >
+      <div class="sidebar__footer hide-if-empty-cart">
         {%- render 'cart-subtotal', type: 'sidebar' -%}
       </div>
 
@@ -362,53 +247,26 @@
         attributes: false, childList: true, subtree: true
       })
     </script>
+    <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" onload="this.media='all'">
 
-  {%- elsif settings.cart_action == 'popup' -%}
+  {%- endunless -%}
 
-    <sidebar-drawer id="site-cart-sidebar" class="sidebar sidebar--top" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true" data-js-site-cart-sidebar>
-      
+  {%- if template contains 'collection' or template contains 'search' -%}
+    <sidebar-drawer id="site-filters-sidebar" class="sidebar sidebar--right" tabindex="-1" role="dialog" aria-modal="true" style="display:none">
       <div class="sidebar__header">
-        <span class="sidebar__title">
-          {{ 'general.accessibility_labels.item_added' | t }}
+        <span class="sidebar__title h5">
+          {{ 'collections.filter_and_sort' | t }}
         </span>
         <button class="sidebar__close" data-js-close>
           <span class="visually-hidden">{{ 'general.accessibility_labels.close_sidebar' | t }}</span>
           <span aria-hidden="true" aria-role="img">{%- render 'theme-symbols', icon: 'close' -%}</span>
         </button>
       </div>
-
-      <div class="sidebar__body" data-js-site-cart-popup-content>
+      <div class="sidebar__body">
+        <form id="FacetFiltersFormMobile" class="facets__form facets__form--mobile"></form>
       </div>
-
-      <div class="sidebar__footer">
-
-        {%- if settings.cart_terms_checkbox -%}
-          <terms-checkbox>
-            <div class="agree-to-terms gutter-bottom--small">
-              <input type="checkbox" id="AgreeToTos" class="styled-checkbox" required />
-              <label for="AgreeToTos" class="text-size--small">
-                {{ settings.cart_terms_text }}
-              </label>
-            </div>
-          </terms-checkbox>
-          <script src="{{ 'component-terms-checkbox.js' | asset_url }}" defer></script>
-        {%- endif -%}
-        
-        <div class="flex-buttons">
-          <a id="ViewCart" href="{{ routes.cart_url }}" class="button button--regular button--outline">{{ 'cart.view_cart' | t }}</a>
-          <form action="{{ routes.cart_url }}" method="post" novalidate>
-            <button id="CheckOut" class="button button--regular button--solid button--fullwidth" name="checkout" {%- if settings.cart_terms_checkbox -%} disabled {%- endif -%}>
-              {{ 'cart.checkout' | t }}
-            </button>
-          </form>
-        </div>
-      </div>
-
     </sidebar-drawer>
-
   {%- endif -%}
-
-  <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" onload="this.media='all'">
 
   <script src="{{ 'component-quantity-selector.js' | asset_url }}" defer></script>
   {%- if settings.cart_action == "overlay" or template.name contains "cart" -%}
@@ -417,6 +275,16 @@
 
   <link rel="stylesheet" href="{{ 'component-sidebar.css' | asset_url }}" media="print" onload="this.media='all';">
   <script src="{{ 'section-header.js' | asset_url }}" defer></script>
+
+  <script>
+    if ( document.getElementById('shopify-product-reviews') ) {
+      var element = document.createElement("link");
+      element.setAttribute("rel", "stylesheet");
+      element.setAttribute("type", "text/css");
+      element.setAttribute("href", "{{ 'component-shopify-reviews.css' | asset_url }}");
+      document.body.appendChild(element);
+    }
+  </script>
   
   {%- if request.design_mode -%}
     <script src="{{ 'section-announcement-bar.js' | asset_url }}" defer></script>
@@ -425,82 +293,25 @@
     <script src="{{ 'component-video.js' | asset_url }}" defer></script>
     <script src="{{ 'component-store-selector.js' | asset_url }}" defer></script>
     <script src="{{ 'component-interactive-map.js' | asset_url }}" defer></script>
-    <script src="{{ 'component-image-hotspots.js' | asset_url }}" defer></script>
     <script src="{{ 'component-localization-form.js' | asset_url }}" defer></script>
     <script src="{{ 'component-predictive-search.js' | asset_url }}" defer></script>
     <script src="{{ 'component-shipping-calculator.js' | asset_url }}" defer></script>
-    <script src="{{ 'component-scrolling-text.js' | asset_url }}" defer></script>
-    <script src="{{ 'component-before-after.js' | asset_url }}" defer></script>
-    <script src="{{ 'component-collection-tabs.js' | asset_url }}" defer></script>
-    <script src="{{ 'component-countdown-clock.js' | asset_url }}" defer></script>
-    <script src="{{ 'component-share-link.js' | asset_url }}" defer></script>
   {%- endif -%}
 
+    <script src="{{ 'hortinova.js' | asset_url }}" defer></script>
   <div class="site-overlay" style="display:none"></div>
 
   <link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}" media="print" onload="this.media='all';">
 
-  {%- if settings.show_gotop -%}
-    <span id="go-top" class="main-go-top"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-    >
-      <span class="visually-hidden">{{ 'general.accessibility_labels.go_to_top' | t }}</span>
-      <span class="main-go-top__icon" aria-hidden="true">{%- render 'theme-symbols', icon: 'chevron' -%}</span>
-    </span>
-    <script>
-      window.addEventListener('scroll', ()=>{
-        if ( window.scrollY > 100 ) {
-          document.getElementById('go-top').classList.add('show');
-        } else {
-          document.getElementById('go-top').classList.remove('show');
-        }
-      }, {passive: true});
-    </script>
-  {%- endif -%}
-    
-  <script>
-    document.querySelectorAll('.rte a img').forEach(elm=>{
-  		elm.parentNode.style.border = 'none';
-    });
-  </script>
+  {%- liquid
+    if settings.custom_css != blank
+      echo settings.custom_css | prepend: '<style>' | append: '</style>'
+    endif
+    if settings.custom_js != blank
+      echo settings.custom_js | prepend: '<script>' | append: '</script>'
+    endif
+  -%}
 
-  {%- unless template contains 'cart' and settings.enable_instapage == false -%}
-    <script src="{{ 'instantpage.js' | asset_url }}" type="module" defer></script>
-  {%- endunless -%}
-    
-    {%- if settings.disable_all_image_animations -%}
-      <style>
-        .lazy-image img,
-        .lazy-image img:hover {
-          transition: all 0ms !important;
-          opacity: 1 !important;
-          transform: none !important;
-        }
-        .no-touchevents a:hover .lazy-image.lazy-image--zoom-animation img,
-        .no-touchevents .card--animation:hover .lazy-image.lazy-image--animation img  {
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
-      </style>
-    {%- endif -%}
-
-    {%- if template contains 'product' -%}
-      <modal-box id="modal-common" class="popup-common" 
-        data-options='{
-          "show": 0,
-          "showOnce": false,
-          "enabled": false,
-          "closeByKey": true,
-          "disableScroll": true,
-          "blockTabNavigation": true,
-          "enableClose": true
-        }'
-        style="display:none;"
-      ></modal-box>
-    {%- endif -%}
-
+{{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
 </body>
 </html>

@@ -6,14 +6,6 @@
       "search_placeholder": "ค้นหาสินค้า...",
       "continue_browsing": "เรียกดูต่อไป"
     },
-    "sharing": {
-      "title": "แบ่งปัน",
-      "facebook": "Facebook",
-      "twitter": "X (Twitter)",
-      "pinterest": "Pinterest",
-      "copy_to_clipboard": "คัดลอกไปยังคลิปบอร์ด",
-      "url_copied_to_clipboard": "URL ถูกคัดลอก"
-    },
     "newsletter": {
       "email_label": "ระบุอีเมลของคุณ",
       "submit_label": "ส่ง",
@@ -25,9 +17,9 @@
       "email_label": "อีเมล",
       "phone_label": "หมายเลขโทรศัพท์",
       "message_label": "ข้อความ",
-      "subject_label": "หัวข้อ",
       "submit_label": "ส่ง",
-      "success_message": "ขอบคุณที่ติดต่อเรามานะ! เราจะติดต่อกลับคุณโดยเร็วที่สุด"
+      "success_message": "ขอบคุณที่ติดต่อเรามานะ! เราจะติดต่อกลับคุณโดยเร็วที่สุด",
+      "subject_label": "หัวข้อ"
     },
     "password_page": {
       "login_form_heading": "เข้าร้านค้าโดยใช้รหัสผ่าน",
@@ -39,13 +31,12 @@
       "signup_form_email_placeholder": "อีเมลของคุณ",
       "signup_form_submit": "ส่ง",
       "signup_form_success": "เราจะส่งอีเมลถึงคุณก่อนที่เราจะเปิดร้านนะ!",
-      "admin_link_html": "คุณเป็นเจ้าของร้านหรือไม่ <a href=\"\/admin\">เข้าสู่ระบบที่นี่<\/a>",
+      "admin_link_html": "คุณเป็นเจ้าของร้านหรือไม่ <a href=\"/admin\">เข้าสู่ระบบที่นี่</a>",
       "password_link": "เข้าโดยใช้รหัสผ่าน",
       "powered_by_shopify_html": "ร้านค้านี้จะถูกขับเคลื่อนโดย {{ shopify }}"
     },
     "prefixes": {
-      "by": "โดย",
-      "or": "หรือ"
+      "by": "โดย"
     },
     "account_link": {
       "logged_in": "บัญชีของฉัน",
@@ -60,11 +51,7 @@
       "cart": "ตะกร้าสินค้า"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y",
-      "days": "วัน",
-      "hours": "ชั่วโมง",
-      "minutes": "นาที",
-      "seconds": "วินาที"
+      "month_day_year": "%b %d, %Y"
     },
     "copyright": "ลิขสิทธิ์",
     "meta": {
@@ -73,16 +60,7 @@
     },
     "share_on": "แบ่งปันเมื่อ",
     "accessibility_labels": {
-      "menu": "เมนู",
-      "item_added": "รายการที่เพิ่มในตะกร้าสินค้าของคุณ",
-      "increase_quantity": "เพิ่มจำนวน",
-      "decrease_quantity": "ลดจำนวน",
-      "open_menu": "เปิดเมนู",
-      "open_filters": "เปิดตัวกรอง",
-      "open_search": "เปิดการค้นหา",
-      "open_cart": "เปิดตะกร้า",
-      "close_sidebar": "ปิดแถบด้านข้าง",
-      "close_popup": "ปิดป๊อปอัป",
+      "home": "หน้าหลัก",
       "skip_to_content": "ข้ามไปยังเนื้อหา",
       "next": "ต่อไป",
       "previous": "ก่อนหน้า",
@@ -90,10 +68,9 @@
       "back": "กลับ",
       "play_video": "เล่นวิดีโอ",
       "language_dropdown_label": "ภาษา",
-      "country_dropdown_label": "ประเทศ\/ภูมิภาค",
+      "country_dropdown_label": "ประเทศ/ภูมิภาค",
       "quantity": "ปริมาณ",
       "price": {
-        "price": "ราคา",
         "regular": "ราคาปกติ",
         "sale": "ราคาขาย",
         "unit": "ราคาต่อหน่วย"
@@ -102,29 +79,37 @@
       "form_error": "ข้อผิดพลาด",
       "share": {
         "facebook": "แชร์ผ่าน Facebook",
-        "twitter": "แชร์ผ่าน X",
+        "twitter": "แชร์ผ่าน Twitter",
         "pinterest": "แชร์ผ่าน Pinterest"
       },
       "rating_info": "คะแนน: {{ rating_value }} จาก {{ rating_max }}",
-      "top": "สูงสุด",
-      "go_to_top": "สูงสุด",
-      "slide": "แสดงสไลด์ {{ count }}",
-      "next_slide": "สไลด์ถัดไป",
-      "previous_slide": "สไลด์ก่อนหน้า",
-      "time_left": "เวลาที่เหลือ"
-    },
-    "cookies_popup": {
-      "title": "คุกกี้",
-      "content": "เว็บไซต์นี้ใช้คุกกี้เพื่อให้คุณได้รับประสบการณ์การใช้งานที่ดีที่สุดบนอุปกรณ์ของเรา",
-      "button_label": "ยอมรับคุกกี้ทั้งหมด",
-      "button_label_decline": "ปฏิเสธคุกกี้ทั้งหมด"
+      "menu": "เมนู",
+      "increase_quantity": "เพิ่มจำนวน",
+      "decrease_quantity": "ลดจำนวน",
+      "open_menu": "เปิดเมนู",
+      "open_filters": "เปิดตัวกรอง",
+      "open_search": "เปิดการค้นหา",
+      "open_cart": "เปิดรถเข็น",
+      "close_sidebar": "ปิดแถบด้านข้าง",
+      "close_popup": "ปิดป็อปอัพ"
     },
     "onboarding": {
       "product_title": "ชื่อผลิตภัณฑ์",
       "collection_title": "ชื่อคอลเลคชัน",
-      "author_name": "ชื่อผู้เขียน",
       "article_title": "ชื่อบทความ",
+      "author_name": "ชื่อผู้เขียน",
       "seven_comments": "7 ความคิดเห็น"
+    },
+    "sharing": {
+      "title": "แชร์",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "pinterest": "Pinterest"
+    },
+    "cookies_popup": {
+      "title": "คุกกี้",
+      "content": "เว็บไซต์นี้ใช้คุกกี้เพื่อให้คุณได้รับประสบการณ์การใช้งานที่ดีที่สุดบนอุปกรณ์ของเรา",
+      "button_label": "ยอมรับคุกกี้ทั้งหมด"
     }
   },
   "collections": {
@@ -141,7 +126,7 @@
       "one": "เลือกแล้ว {{ count }}",
       "other": "เลือกแล้ว {{ count }}"
     },
-    "max_price_html": "ราคาสูงสุดอยู่ที่ {{ price }}",
+    "max_price": "ราคาสูงสุดอยู่ที่ {{ price }}",
     "product_count": {
       "one": "สินค้า {{ product_count }} จาก {{ count }} ชิ้น",
       "other": "สินค้า {{ product_count }} จาก {{ count }} ชิ้น"
@@ -154,10 +139,9 @@
     "sort_button": "เรียงลำดับ",
     "sort_by_label": "เรียงตาม:",
     "to": "ไปยัง",
-    "use_fewer_filters_html": "ใช้ตัวกรองน้อยลงหรือ <a class=\"{{ class }}\" href=\"{{ link }}\">ล้างทั้งหมด<\/a>",
+    "use_fewer_filters_html": "ใช้ตัวกรองน้อยลงหรือ <a class=\"{{ class }}\" href=\"{{ link }}\">ล้างทั้งหมด</a>",
     "view_all_products": "ดูผลิตภัณฑ์ทั้งหมด",
     "no_collections": "ขออภัย ขณะนี้ไม่มีคอลเลกชันในร้านค้านี้",
-    "match_all_label": "ที่ตรงกันทั้งหมด",
     "view_all_collections": "ดูคอลเลคชันทั้งหมด"
   },
   "products": {
@@ -169,11 +153,6 @@
       "new_product": "ใหม่",
       "preorder_product": "สั่งของล่วงหน้า",
       "no_products_text": "ขณะนี้ไม่มีสินค้าในคอลเลกชันนี้",
-      "save_amount_html": "ประหยัด {{ amount }}",
-      "save_up_to_amount_html": "ประหยัดสูงสุดถึง {{ amount }}",
-      "save_percent": "มากถึง {{ percent }}",
-      "choose_variant_first": "เลือกรูปแบบ",
-      "select_variant": "เลือก {{ variant }}",
       "quick_buy": "ซื้อเลย",
       "quick_view": "มุมมองด่วน"
     },
@@ -187,13 +166,10 @@
         "unavailable_variant": "ไม่มี",
         "one_product": "เหลือสินค้าอยู่เพียงหนึ่งชิ้น",
         "few_products": "มีสินค้าเหลืออยู่ {{ count }} ชิ้น",
-        "many_products": "มีสินค้าเหลืออยู่ {{ count }} ชิ้น",
-        "enough_products": "มีสินค้าคงคลัง",
         "no_products": "ไม่มีสินค้าเหลืออยู่",
-        "preorder": "สินค้าชิ้นนี้หมด แต่คุณยังสามารถสั่งได้"
+        "preoder": "สินค้าชิ้นนี้หมด แต่คุณยังสามารถสั่งได้"
       },
       "add_to_cart_button": "เพิ่มไปยังรถเข็น",
-      "choose_options_button": "เลือกตัวเลือก",
       "preorder_button": "พรีออเดอร์",
       "share_link": "แบ่งปัน",
       "reviews_count": {
@@ -203,12 +179,10 @@
       },
       "loading_reviews": "กำลังโหลดรีวิวเพิ่มเติม",
       "include_taxes": "รวมภาษีแล้ว",
-      "exclude_taxes": "ไม่รวมภาษี",
-      "shipping_policy_html": "<a href=\"{{ link }}\">การจัดส่ง<\/a> คำนวณเมื่อเช็กเอาต์",
-      "required_line_item": "ต้องระบุข้อมูลในช่องนี้",
+      "shipping_policy_html": "<a href=\"{{ link }}\">การจัดส่ง</a> คำนวณเมื่อเช็กเอาต์",
       "view_in_space": "ดูในพื้นที่ของคุณ",
       "view_in_space_label": "ดูในพื้นที่ของคุณ โหลดรายการในหน้าต่างความเป็นจริงส่วนขยาย",
-      "sales_amount_html": "คุณประหยัดไป {{ amount }}",
+      "sales_amount": "คุณประหยัดไป {{ amount }}",
       "variants": "ตัวเลือกต่างๆ"
     },
     "featured_product": {
@@ -226,9 +200,9 @@
     "update": "อัปเดตรถเข็น",
     "note": "หมายเหตุเกี่ยวกับคำสั่งซื้อ",
     "policies": {
-      "taxes_and_shipping_policy_at_checkout_html": "ระบบจะคำนวณภาษีและ<a href=\"{{ link }}\">ค่าจัดส่ง<\/a>ในขั้นตอนการชำระเงิน",
+      "taxes_and_shipping_policy_at_checkout_html": "ระบบจะคำนวณภาษีและ<a href=\"{{ link }}\">ค่าจัดส่ง</a>ในขั้นตอนการชำระเงิน",
       "taxes_included_but_shipping_at_checkout": "ระบบจะรวมภาษีและคำนวณค่าจัดส่งในขั้นตอนการชำระเงิน",
-      "taxes_included_and_shipping_policy_html": "รวมภาษีแล้ว <a href=\"{{ link }}\">ค่าจัดส่ง<\/a>ที่คิดคำนวณในระหว่างขั้นตอนการชำระเงิน",
+      "taxes_included_and_shipping_policy_html": "รวมภาษีแล้ว <a href=\"{{ link }}\">ค่าจัดส่ง</a>ที่คิดคำนวณในระหว่างขั้นตอนการชำระเงิน",
       "taxes_and_shipping_at_checkout": "ระบบจะคำนวณภาษีและค่าจัดส่งในขั้นตอนการชำระเงิน"
     },
     "empty": "ขณะนี้รถเข็นของคุณว่างเปล่า",
@@ -245,10 +219,6 @@
       "one": "สินค้า {{ count }} ชิ้นถูกเพิ่มไปยังรถเข็นของคุณแล้ว",
       "other": "สินค้า {{ count }} ชิ้นถูกเพิ่มไปยังรถเข็นของคุณแล้ว"
     },
-    "bundled_items_toggle": {
-      "show_items": "แสดง {{ count }} รายการ",
-      "hide_items": "ซ่อน {{ count }} รายการ"
-    },
     "free_shipping_remaining_html": "คุณเหลืออีก {{ remaining_amount }} ก็จะได้รับสิทธิ์จัดส่งฟรี",
     "free_shipping_eligible": "คุณได้รับสิทธิ์จัดส่งฟรี!",
     "shipping_calculator": {
@@ -261,10 +231,7 @@
       "product": "ผลิตภัณฑ์",
       "quantity": "จำนวน",
       "total": "รวม"
-    },
-    "discount_codes_label": "รหัสส่วนลด",
-    "discount_code_error": "ไม่สามารถใช้รหัสส่วนลดกับรถเข็นของคุณได้",
-    "remove_discount_code": "ลบรหัสส่วนลด: {{ code }}"
+    }
   },
   "blog": {
     "grid": {
@@ -272,12 +239,12 @@
         "one": "{{ count }} ความคิดเห็น",
         "other": "{{ count }} ความคิดเห็น"
       },
-      "tags_label": "แท็ก",
       "read_more_label": "อ่านต่อไป",
       "no_articles_text": "ขณะนี้ไม่มีบทความในบล็อกนี้",
       "tags_dropdown": {
         "all": "ทั้งหมด"
-      }
+      },
+      "tags_label": "แท็ก"
     },
     "article": {
       "comments_list_title": "ความคิดเห็น",
@@ -315,13 +282,15 @@
       "pages_and_articles_found": "เพจและบทความสำหรับ \"{{ terms }}\"",
       "results_count": {
         "zero": "ไม่มีผลลัพธ์",
-        "one": "กำลังแสดง {{ count }} ผลลัพธ์",
-        "other": "กำลังแสดง {{ offset }} - {{ page_size }} จาก {{ count }} ผลลัพธ์"
+        "one": "กำลังแสดง {{count}} ผลลัพธ์",
+        "other": "กำลังแสดง {{offset}} - {{page_size}} จาก {{count}} ผลลัพธ์"
       },
       "form_placeholder": "ใส่คีย์เวิร์ดที่นี่",
       "search_button_label": "ค้นหา",
       "search_again_button_label": "ค้นหาอีกครั้ง",
-      "continue_browsing": "เรียกดูต่อไป"
+      "continue_browsing": "เรียกดูต่อไป",
+      "pages_found": "หน้า ({{ count }})",
+      "articles_found": "บทความ ({{ count }})"
     }
   },
   "customers": {
@@ -333,8 +302,7 @@
         "date": "วันที่",
         "payment_status": "สถานะการชำระเงิน",
         "fulfillment_status": "สถานะการจัดการคำสั่งซื้อ",
-        "total": "ทั้งหมด",
-        "view_order": "ดูคำสั่งซื้อ"
+        "total": "ทั้งหมด"
       },
       "no_orders_message": "คุณยังไม่ได้สั่งซื้อเลย",
       "account_details_title": "รายละเอียดบัญชี",
@@ -377,17 +345,17 @@
     },
     "register_page": {
       "title": "สร้างบัญชี",
-      "login_text": "มีบัญชีอยู่แล้วใช่ไหม",
       "form": {
         "first_name_label": "ชื่อ",
         "last_name_label": "นามสกุล",
         "email_label": "อีเมล",
         "password_label": "รหัสผ่าน",
         "submit_button": "สร้าง"
-      }
+      },
+      "login_text": "มีบัญชีอยู่แล้วใช่ไหม"
     },
     "addresses_page": {
-      "title": "บัญชีของฉัน",
+      "title": "ที่อยู่ของฉัน",
       "subtitle": "สมุดที่อยู่",
       "add_address_link": "เพิ่มที่อยู่ใหม่",
       "edit_address_link": "แก้ไข",
@@ -445,23 +413,15 @@
     "balance_left": "คงเหลือ",
     "redeem": "ใช้รหัสนี้ที่หน้าชำระเงินเพื่อแลกบัตรของขวัญของคุณ",
     "shop_link": "เริ่มช้อปปิ้ง",
-    "print": "พิมพ์",
-    "recipient": {
-      "checkbox": "ฉันต้องการส่งสิ่งนี้เป็นของขวัญ",
-      "email_label": "อีเมลผู้รับ",
-      "name_label": "ชื่อผู้รับ (ระบุหรือไม่ก็ได้)",
-      "message_label": "ข้อความ (ระบุหรือไม่ก็ได้)",
-      "max_characters": "สูงสุด {{ max_chars }} อักขระ",
-      "send_on_label": "ส่งบัตรของขวัญในวันที่แตกต่างกัน (ระบุหรือไม่ก็ได้)"
-    }
+    "print": "พิมพ์"
   },
   "store_availability": {
     "view_store_info": "ดูข้อมูลร้านค้า",
     "check_other_stores": "ตรวจสอบความพร้อมการให้บริการที่ร้านค้าอื่น ๆ",
     "pick_up_available": "มีจุดรับสินค้า",
     "pick_up_currently_unavailable": "ไม่มีจุดรับสินค้าในขณะนี้",
-    "pick_up_available_at_html": "มีจุดรับสินค้าที่ <strong>{{ location_name }}<\/strong>",
-    "pick_up_unavailable_at_html": "ไม่มีจุดรับสินค้าในขณะนี้ที่ <strong>{{ location_name }}<\/strong>",
+    "pick_up_available_at_html": "มีจุดรับสินค้าที่ <strong>{{ location_name }}</strong>",
+    "pick_up_unavailable_at_html": "ไม่มีจุดรับสินค้าในขณะนี้ที่ <strong>{{ location_name }}</strong>",
     "invalid_location_address": "ติดต่อร้านค้าเพื่อยืนยันที่อยู่",
     "refresh": "รีเฟรช",
     "general": {

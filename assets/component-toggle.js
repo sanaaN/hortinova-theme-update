@@ -3,16 +3,12 @@ if ( typeof ToggleTab !== 'function' ) {
 	class ToggleTab extends HTMLElement {
 
 		constructor(){
+
 			super();
-			this._prefix = window.KT_PREFIX || '';
 
 			this.titleEl = this.querySelector('[data-js-title]');
 			this.contentEl = this.querySelector('[data-js-content]');
 			this.titleEl.innerHTML = `${this.titleEl.innerHTML}${this.hasAttribute('data-togglepack-alternate') ? KROWN.settings.symbols.toggle_pack_alternate : KROWN.settings.symbols.toggle_pack}`;
-
-			if ( this.hasAttribute('data-toggle-inert') ) {
-				this.toggleInert = true;
-			}
 
 			this.titleEl.addEventListener('click',this.onClickHandler.bind(this));
 			this.titleEl.addEventListener('keydown', e=>{
@@ -22,24 +18,15 @@ if ( typeof ToggleTab !== 'function' ) {
 			})
 
 		}
-		
+
 		onClickHandler(){
-			if ( ! this.classList.contains(`${this._prefix}opened`) ) {
-				this.classList.add(`${this._prefix}opened`);
+			if ( ! this.classList.contains('opened') ) {
+				this.classList.add('opened');
 				this.titleEl.setAttribute('aria-expanded', 'true');
 				this.slideDown(this.contentEl, 200);
-				if ( this.toggleInert ) {
-					this.contentEl.removeAttribute('inert');
-				}
-				setTimeout(()=>{
-					this.contentEl.querySelector('css-slider')?.resetSlider();
-				}, 200);
 			} else {
-				this.classList.remove(`${this._prefix}opened`);
+				this.classList.remove('opened');
 				this.titleEl.setAttribute('aria-expanded', 'false');
-				if ( this.toggleInert ) {
-					this.contentEl.setAttribute('inert', '');
-				}
 				this.slideUp(this.contentEl, 200);
 			}
 		}
@@ -106,6 +93,23 @@ if ( typeof ToggleTab !== 'function' ) {
 		customElements.define('toggle-tab', ToggleTab);
 	}
 
+	document.addEventListener('shopify:block:select', e=>{
+		const block = e.target;
+		if ( block.classList.contains('toggle') ) {
+			if ( !block.querySelector('[data-js-title]').classList.contains('opened') ) {
+				block.onClickHandler();
+			}
+		}
+	})
+	document.addEventListener('shopify:block:deselect', e=>{
+		const block = e.target;
+		if ( block.classList.contains('toggle') ) {
+			if ( block.querySelector('[data-js-title]').classList.contains('opened') ) {
+				block.onClickHandler();
+			}
+		}
+	})
+
 }
 
 if ( typeof ToggleGroup !== 'function' ) {
@@ -115,10 +119,9 @@ if ( typeof ToggleGroup !== 'function' ) {
 		constructor(){
 
 			super();
-			this._prefix = window.KT_PREFIX || '';
 			this.querySelectorAll('toggle-tab').forEach(allToggle=>{
 				allToggle.querySelector('[data-js-title]').addEventListener('click', ()=>{
-					this.querySelectorAll(`toggle-tab.${this._prefix}opened`).forEach(openedToggle=>{
+					this.querySelectorAll('toggle-tab.opened').forEach(openedToggle=>{
 						if ( allToggle !== openedToggle ) {
 							openedToggle.onClickHandler();
 						}
@@ -129,9 +132,9 @@ if ( typeof ToggleGroup !== 'function' ) {
 		}
 
 	}
-	
   if ( typeof customElements.get('toggle-group') == 'undefined' ) {
 		customElements.define('toggle-group', ToggleGroup);
 	}
+
 
 }

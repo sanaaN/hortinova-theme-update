@@ -1,3 +1,6 @@
+/*
+ *  1.0. Mixins
+*/
 @media screen and (max-width: 767px) {
   .shipping-calculator__cell {
     padding-bottom: var(--gutter-small);
@@ -31,7 +34,7 @@
 .shipping-calculator select {
   width: 100%;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
   .shipping-calculator input[name=zipcode] {
     max-width: 150px;
   }

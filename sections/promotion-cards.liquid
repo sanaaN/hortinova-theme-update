@@ -1,11 +1,6 @@
-<div id="section-{{ section.id }}" class="container--large remove-empty-space
-  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
-  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
-  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
-  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
-">
+<div class="container--large container--vertical-space">
 
-  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
+  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading -%}
 
   {%- if section.blocks.size > 0 -%}
       
@@ -16,45 +11,29 @@
         <div id="element-{{ block.id }}" class="card" {{ block.shopify_attributes }}>
 
           {%- if block.settings.button_label == blank and block.settings.link != blank -%}
-            <a href="{{ block.settings.link }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}>
+            <a href="{{ block.settings.link }}">
           {%- else -%}
             <div>
           {%- endif -%}
 
             <div 
-              class="card__image border-radius-top"
+              class="card__image"
               style="padding-top:{{ 100 | divided_by: section.settings.image_aspect_ratio }}%"
             >
-
-              {%- liquid
-                if section.index == 1 and forloop.index <= 2
-                  assign preload = true
+              {%- liquid 
+                unless block.settings.image == blank
+                  if section.settings.layout contains 'grid-4'
+                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1024px) 50vw, (max-width: 1360px) 25vw, 320px"'
+                  elsif section.settings.layout contains 'grid-3'
+                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 33vw, 420px"'
+                  else
+                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 50vw, 640px"'
+                  endif
+                  render 'lazy-image', image: block.settings.image, sizes: sizes, ratio: section.settings.image_aspect_ratio, type: 'background', alt: block.settings.title
                 else
-                  assign preload = false
-                endif
+                  echo 'image' | placeholder_svg_tag
+                endunless
               -%}
-
-              {%- unless block.settings.image == blank -%}
-                {%- if section.settings.layout contains 'grid-4' -%}
-                  {%- capture sizes -%}
-                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1024px) 50vw, (max-width: {{ settings.theme_max_width }}px) 25vw, {{ settings.theme_max_width | divided_by: 4 }}px"
-                  {%- endcapture -%}
-                {%- elsif section.settings.layout contains 'grid-3' -%}
-                  {%- capture sizes -%}
-                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 33vw, {{ settings.theme_max_width | divided_by: 3 }}px"
-                  {%- endcapture -%}
-                {%- else -%}
-                  {%- capture sizes -%}
-                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 50vw, {{ settings.theme_max_width | divided_by: 2 }}px"
-                  {%- endcapture -%}
-                {%- endif -%}
-
-                {%- render 'lazy-image', image: block.settings.image, sizes: sizes, ratio: section.settings.image_aspect_ratio, type: 'background', alt: block.settings.title, preload: preload -%}
-                
-              {%- else -%}
-                {{ 'image' | placeholder_svg_tag }}
-              {%- endunless -%}
-
             </div>
 
             <div class="card__text  
@@ -72,7 +51,7 @@
               {%- endunless -%}
 
               {%- unless block.settings.title == blank -%}
-                <{{ block.settings.seo_h_tag }} class="{{ section.settings.title_size }}" style="display:block">{{ block.settings.title | escape }}</{{ block.settings.seo_h_tag }}>
+                <h3 class="{{ section.settings.title_size }}">{{ block.settings.title | escape }}</h3>
               {%- endunless -%}
 
               {%- unless block.settings.subtitle == blank -%}
@@ -81,7 +60,7 @@
 
               {%- if block.settings.button_label != blank -%}
                 <div class="increased-spacing">
-                  <a href="{{ block.settings.link | escape }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}  class="button {% unless section.settings.layout contains 'grid-2' %} button--{{ section.settings.button_width }} {% endunless %} button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}">{{ block.settings.button_label | escape }}</a>
+                  <a href="{{ block.settings.link | escape }}" class="button {% unless section.settings.layout contains 'grid-2' %} button--fullwidth {% endunless %} button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}">{{ block.settings.button_label | escape }}</a>
                 </div>
               {%- endif -%}
 
@@ -93,7 +72,7 @@
             </div>
           {%- endif -%}
 
-          {%- render 'custom-colors', id: block.id, text: block.settings.color_text_main, background: block.settings.color_background_main, accent: block.settings.color_accent_main, borders: block.settings.color_borders_main, shadow: block.settings.color_shadow_main, hide_borders: block.settings.color_hide_borders, hide_shadow: block.settings.color_hide_shadow -%}
+          {%- render 'custom-colors', id: block.id, text: block.settings.color_text_main, background: block.settings.color_background_main, borders: block.settings.color_borders_main, hide_borders: block.settings.color_hide_borders -%}
 
         </div>
 
@@ -105,37 +84,11 @@
 
 </div>
 
-{%- if section.settings.section_background_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background-color: {{ section.settings.section_background_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_background_gradient != blank -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background: {{ section.settings.section_background_gradient }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_heading_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      --color-text-main: {{ section.settings.section_heading_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
-
 {% schema %}
   {
     "name": "t:sections.local-extra-words.sections.promotion-cards.name",
     "max_blocks": 12,
     "settings": [
-      {
-        "type": "header",
-        "content": "t:local-march-update.labels.heading"
-      },
       {
         "type": "text",
         "id": "heading",
@@ -147,26 +100,6 @@
         "id": "subheading",
         "label": "t:sections.local-extra-words.sections.headings.subheading",
         "default": "Share your best offers"
-      },
-      {
-        "type": "select",
-        "id": "section_heading_layout",
-        "label": "t:sections.rich-text.settings.text_alignment.label",
-        "options": [
-          {
-            "value": "section-heading--left",
-            "label": "t:sections.rich-text.settings.text_alignment.options__1.label"
-          },
-          {
-            "value": "section-heading--center",
-            "label": "t:sections.rich-text.settings.text_alignment.options__2.label"
-          }
-        ],
-        "default": "section-heading--left"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.main-article.blocks.content.name"
       },
       {
         "type": "select",
@@ -263,20 +196,16 @@
         "label": "t:sections.local-extra-words.sections.main-header.settings.promotion_block.title.size",
         "options": [
           {
-            "value": "h4",
+            "value": "h3",
             "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__1"
           },
           {
-            "value": "h3",
+            "value": "h2",
             "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__5"
           },
           {
-            "value": "h2",
-            "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__2"
-          },
-          {
             "value": "h1",
-            "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__3"
+            "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__2"
           }
         ],
         "default": "h3"
@@ -328,114 +257,6 @@
           }
         ],
         "default": "outline"
-      },
-      {
-        "id": "button_width",
-        "label": "t:local-260.labels.button_width.label",
-        "type": "select",
-        "options": [
-          {
-            "value": "fullwidth",
-            "label": "t:local-260.labels.button_width.option_1"
-          },
-          {
-            "value": "fit",
-            "label": "t:local-260.labels.button_width.option_2"
-          }
-        ],
-        "default": "fullwidth"
-      },
-      {
-        "type": "header",
-        "content": "t:local-march-update.labels.section_design"
-      },
-      {
-        "type": "color",
-        "id": "section_background_color",
-        "label": "t:sections.local-extra-words.settings_schema.product-card.badges.custom_badges.color",
-        "default": "rgba(0,0,0,0)"
-      },
-      {
-        "type": "color_background",
-        "id": "section_background_gradient",
-        "label": "t:local-230.background_gradient"
-      },
-      {
-        "type": "color",
-        "id": "section_heading_color",
-        "label": "t:local-223.heading_text_color",
-        "default": "rgba(0,0,0,0)"
-      },
-      {
-        "type": "checkbox",
-        "id": "descrease_margin",
-        "visible_if": "{{ section.settings.remove_margin == false }}",
-        "label": "t:theme_blocks.descrease_top_margin",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "remove_margin",
-        "visible_if": "{{ section.settings.descrease_margin == false }}",
-        "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "t:sections.refactor_words.seo.name"
-      },
-      {
-        "type": "select",
-        "id": "seo_h_tag",
-        "label": "t:sections.refactor_words.seo.label",
-        "info": "t:sections.refactor_words.seo.info",
-        "options": [
-          {
-            "value": "h1",
-            "label": "H1"
-          },
-          {
-            "value": "h2",
-            "label": "H2"
-          },
-          {
-            "value": "h3",
-            "label": "H3"
-          },
-          {
-            "value": "h4",
-            "label": "H4"
-          },
-          {
-            "value": "span",
-            "label": "span"
-          }
-        ],
-        "default": "h2"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.refactor_words.announcement-bar.visibility.label"
-      },
-      {
-        "type": "select",
-        "id": "section_visibility",
-        "label": "t:sections-visibility.label",
-        "options": [
-          {
-            "value": "always",
-            "label": "t:sections-visibility.options.always"
-          },
-          {
-            "value": "mobile",
-            "label": "t:sections-visibility.options.mobile"
-          },
-          {
-            "value": "desktop",
-            "label": "t:sections-visibility.options.desktop"
-          }
-        ],
-        "default": "always"
       }
     ], 
     "blocks": [
@@ -477,13 +298,6 @@
             "info": "t:sections.image-with-text.blocks.image.settings.url.info"
           },
           {
-            "type": "checkbox",
-            "id": "open_in_new_window",
-            "visible_if": "{{ block.settings.link != blank }}",
-            "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
-            "default": false
-          },
-          {
             "type": "text",
             "id": "button_label",
             "label": "t:sections.image-with-text.blocks.image.settings.button_label.label",
@@ -507,20 +321,8 @@
           },
           {
             "type": "color",
-            "id": "color_accent_main",
-            "label": "t:sections.local-extra-words.settings_schema.colors.settings.accent",
-            "default": "rgba(0,0,0,0)"
-          },
-          {
-            "type": "color",
             "id": "color_borders_main",
             "label": "t:sections.local-extra-words.settings_schema.colors.settings.borders",
-            "default": "rgba(0,0,0,0)"
-          },
-          {
-            "type": "color",
-            "id": "color_shadow_main",
-            "label": "t:local-march-update.shadows.label",
             "default": "rgba(0,0,0,0)"
           },
           {
@@ -528,45 +330,6 @@
             "id": "color_hide_borders",
             "label": "t:sections.local-extra-words.settings_schema.colors.settings.hide_border",
             "default": false
-          },
-          {
-            "type": "checkbox",
-            "id": "color_hide_shadow",
-            "label": "t:local-march-update.shadows.hide",
-            "default": false
-          },
-          {
-            "type": "header",
-            "content": "t:sections.refactor_words.seo.name"
-          },
-          {
-            "type": "select",
-            "id": "seo_h_tag",
-            "label": "t:sections.refactor_words.seo.label",
-            "info": "t:sections.refactor_words.seo.info",
-            "options": [
-              {
-                "value": "h1",
-                "label": "H1"
-              },
-              {
-                "value": "h2",
-                "label": "H2"
-              },
-              {
-                "value": "h3",
-                "label": "H3"
-              },
-              {
-                "value": "h4",
-                "label": "H4"
-              },
-              {
-                "value": "span",
-                "label": "span"
-              }
-            ],
-            "default": "h3"
           }
         ]
       }
@@ -574,16 +337,12 @@
     "presets": [
       {
         "name": "t:sections.local-extra-words.sections.promotion-cards.name",
-        "category": "t:sections-categories.promotions",
         "blocks": [
           { "type": "card" },
           { "type": "card" },
           { "type": "card" }
         ]
       }
-    ],
-    "disabled_on": {
-      "groups": ["header"]
-    }
+    ]
   }
 {% endschema %}

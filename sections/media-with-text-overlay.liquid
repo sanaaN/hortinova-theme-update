@@ -1,123 +1,100 @@
-<div id="section-{{ section.id }}" class="container--large remove-empty-space
-  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
-  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
-  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
-  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
-">
+<div id="section-{{ section.id }}" class="container--large container--vertical-space remove-empty-space">
 
-  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
+  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading -%}
 
   {%- if section.blocks.size > 0 -%}
-
     <div class="grid grid--layout {{ section.settings.layout }}">
       
       {%- for block in section.blocks -%}
 
-        <div id="element-{{ block.id }}" class="card element--height-{{ section.settings.height }} align-content align-content--{{ section.settings.alignment }}" {{ block.shopify_attributes }}>
+      <div id="element-{{ block.id }}" class="card element--height-{{ section.settings.height }} align-content align-content--{{ section.settings.alignment }}" {{ block.shopify_attributes }}>
 
-          {%- if block.settings.link != blank and block.settings.button_label == blank and block.settings.title == blank and block.settings.subtitle == blank -%}
-            <a href="{{ block.settings.link }}" class="card__whole-link" aria-hidden="true"
-              {% if block.settings.open_in_new_window %} target="_blank" {% endif %}
-            ></a>
-          {%- endif -%}
+        <div class="card__text gutter--large spacing--large remove-empty-space">
+          {%- unless block.settings.caption == blank -%}
+            <span class="text-size--{{ section.settings.caption_size }}">{{ block.settings.caption | escape }}</span>
+          {%- endunless -%}
 
-          <div class="card__text gutter--large spacing--large remove-empty-space">
-            {%- unless block.settings.caption == blank -%}
-              <span class="text-size--{{ section.settings.caption_size }}">{{ block.settings.caption | escape }}</span>
-            {%- endunless -%}
-
-            {%- unless block.settings.title == blank -%}
-              <{{ block.settings.seo_h_tag }} class="{{ section.settings.title_size }}">
-                
-                {%- if block.settings.button_label == blank and block.settings.link != blank -%}
-                  <a href="{{ block.settings.link | escape }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}>
-                {%- endif -%}
-                
-                  <span class="text-animation--underline underline-mobile">{{ block.settings.title | escape }}</span>
-                
-                {%- if block.settings.button_label == blank and block.settings.link != blank -%}
-                  </a>
-                {%- endif -%}
-
-              </{{ block.settings.seo_h_tag }}>
-            {%- endunless -%}
-
-            {%- unless block.settings.subtitle == blank -%}
-              <span class="text-size--{{ section.settings.subtitle_size }}">{{ block.settings.subtitle | escape }}</span>
-            {%- endunless -%}
-
-            {%- if block.settings.button_label != blank -%}
-              <div class="increased-spacing">
-                <a href="{{ block.settings.link | escape }}" class="button button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}">{{ block.settings.button_label | escape }}</a>
-              </div>
-            {%- endif -%}
-          </div>
-
-          <div class="card__image card__image--background {% if block.settings.color_background_main != "rgba(0,0,0,0)" %} card__image--with-overlay {% endif %}">
-
-            {%- liquid 
-              assign video_url = block.settings.video_url
-              for source in block.settings.video.sources
-                unless source.url contains 'm3u8'
-                  assign video_url = source.url
-                endunless
-              endfor
-            -%}
-
-            {%- unless video_url != blank -%}
+          {%- unless block.settings.title == blank -%}
+            <h3 class="{{ section.settings.title_size }}">
               
-              {%- unless block.settings.image == blank -%}
+              {%- if block.settings.button_label == blank and block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}">
+              {%- endif -%}
+              
+                <span class="text-animation--underline underline-mobile">{{ block.settings.title | escape }}</span>
+              
+              {%- if block.settings.button_label == blank and block.settings.link != blank -%}
+                </a>
+              {%- endif -%}
 
-                {%- if section.settings.layout contains 'grid-3' -%}
-                  {%- capture sizes -%}
-                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 33vw, {{ settings.theme_max_width | divided_by: 3 }}px"
-                  {%- endcapture -%}
-                {%- elsif section.settings.layout contains 'grid-2' -%}
-                  {%- capture sizes -%}
-                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 50vw, {{ settings.theme_max_width | divided_by: 2 }}px"
-                  {%- endcapture -%}
-                {%- else -%}
-                  {%- capture sizes -%}
-                    sizes="(max-width: {{ settings.theme_max_width }}px) calc(100vw - 20px), calc({{ settings.theme_max_width }} - 80px)"
-                  {%- endcapture -%}
-                {%- endif -%}
+            </h3>
+          {%- endunless -%}
 
-                {%- liquid
-                if section.index == 1 and forloop.index <= 2
-                    assign preload = true
-                  else
-                    assign preload = false
-                  endif
-                -%}
+          {%- unless block.settings.subtitle == blank -%}
+            <span class="text-size--{{ section.settings.subtitle_size }}">{{ block.settings.subtitle | escape }}</span>
+          {%- endunless -%}
 
-                {%- render 'lazy-image', image: block.settings.image, sizes: sizes, type: 'background', alt: block.settings.title, image_alignment: true, id: block.id, preload: preload -%}
-                
-              {%- else -%}
-                {{ 'image' | placeholder_svg_tag }}
-              {%- endunless -%}
-
-            {%- else -%}
-
-              <script>
-                window.KrownAssetLoader.loadScript('{{ "component-video.js" | asset_url }}');
-              </script>
-
-              {%- render 'video-component', video_file: block.settings.video, image: block.settings.image, is_background: true, autoplay_video: true, loop_video: true, id: block.id, title: block.settings.title -%}
-
-            {%- endunless -%}
-
-          </div>
-          
-          {%- render 'custom-colors', id: block.id, text: block.settings.color_text_main, background: block.settings.color_background_main, hide_borders: block.settings.color_hide_borders, hide_shadow: block.settings.color_hide_shadow -%}
-
+          {%- if block.settings.button_label != blank -%}
+            <div class="increased-spacing">
+              <a href="{{ block.settings.link | escape }}" class="button button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}">{{ block.settings.button_label | escape }}</a>
+            </div>
+          {%- endif -%}
         </div>
 
+        <div class="card__image card__image--background {% if block.settings.color_background_main != "rgba(0,0,0,0)" %} card__image--with-overlay {% endif %}" aria-hidden="true">
+
+          {%- unless block.settings.video_url != blank -%}
+            
+            {%- liquid 
+              unless block.settings.image == blank
+                if section.settings.layout contains 'grid-3'
+                  assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 33vw, 420px"'
+                elsif section.settings.layout contains 'grid-2'
+                  assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 50vw, 640px"'
+                else
+                  assign sizes = 'sizes="(max-width: 1360px) calc(100vw - 20px), 1280px"'
+                endif
+                render 'lazy-image', image: block.settings.image, sizes: sizes, type: 'background', alt: block.settings.title, image_alignment: block.settings.image_alignment, id: block.id
+              else
+                echo 'image' | placeholder_svg_tag
+              endunless
+            -%}
+
+          {%- else -%}
+
+          {{ 'component-video-background.css' | asset_url | stylesheet_tag }}
+          
+            <video-background id="video-background-{{ section.id }}" class="video-background" style="display:block">
+              <div class="video-text__container">
+                <div class="video-text__background" {% unless block.settings.video_url == blank %} data-src="{{ block.settings.video_url }}" {% endunless %}>
+                  {%- unless block.settings.image == blank -%}
+                    <span class="video-text__image" aria-hidden="true">
+                      {%- liquid
+                        assign sizes = 'sizes="(max-width: 1023px) calc(100vw - 60px), 84vw"'
+                        render 'lazy-image', image: block.settings.image, type: 'background', sizes: sizes, id: block.id
+                      -%}
+                    </span>
+                  {%- else -%}
+                    <span class="video-text__image onboarding-svg onboarding-background">{{ 'image' | placeholder_svg_tag }}</span>
+                  {%- endunless -%}
+                </div>
+              </div>
+            </video-background>
+
+            <script src="{{ 'component-video.js' | asset_url }}" defer></script>
+
+          {%- endunless -%}
+
+
+        </div>
+        
+        {%- render 'custom-colors', id: block.id, text: block.settings.color_text_main, background: block.settings.color_background_main, hide_borders: block.settings.color_hide_borders -%}
+
+      </div>
+
       {%- endfor %}
-
     </div>
-
   {%- endif -%}
-
 </div>
 
 {% style %}
@@ -128,36 +105,11 @@
   }
 {% endstyle %}
 
-{%- if section.settings.section_background_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background-color: {{ section.settings.section_background_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_background_gradient != blank -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background: {{ section.settings.section_background_gradient }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_heading_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      --color-text-main: {{ section.settings.section_heading_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
-
 {% schema %}
 {
   "name": "t:sections.local-extra-words.sections.media-with-text-overlay.name",
+  "class": "mount-video-background",
   "settings": [
-    {
-      "type": "header",
-      "content": "t:local-march-update.labels.heading"
-    },
     {
       "type": "text",
       "id": "heading",
@@ -169,26 +121,6 @@
       "id": "subheading",
       "label": "t:sections.local-extra-words.sections.headings.subheading",
       "default": "Promote your best products"
-    },
-    {
-      "type": "select",
-      "id": "section_heading_layout",
-      "label": "t:sections.rich-text.settings.text_alignment.label",
-      "options": [
-        {
-          "value": "section-heading--left",
-          "label": "t:sections.rich-text.settings.text_alignment.options__1.label"
-        },
-        {
-          "value": "section-heading--center",
-          "label": "t:sections.rich-text.settings.text_alignment.options__2.label"
-        }
-      ],
-      "default": "section-heading--left"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.main-article.blocks.content.name"
     },
     {
       "type": "select",
@@ -382,98 +314,6 @@
         }
       ],
       "default": "solid"
-    },
-    {
-      "type": "header",
-      "content": "t:local-march-update.labels.section_design"
-    },
-    {
-      "type": "color",
-      "id": "section_background_color",
-      "label": "t:sections.local-extra-words.settings_schema.product-card.badges.custom_badges.color",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "color_background",
-      "id": "section_background_gradient",
-      "label": "t:local-230.background_gradient"
-    },
-    {
-      "type": "color",
-      "id": "section_heading_color",
-      "label": "t:local-223.heading_text_color",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "checkbox",
-      "id": "descrease_margin",
-      "visible_if": "{{ section.settings.remove_margin == false }}",
-      "label": "t:theme_blocks.descrease_top_margin",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "remove_margin",
-      "visible_if": "{{ section.settings.descrease_margin == false }}",
-      "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "t:sections.refactor_words.seo.name"
-    },
-    {
-      "type": "select",
-      "id": "seo_h_tag",
-      "label": "t:sections.refactor_words.seo.label",
-      "info": "t:sections.refactor_words.seo.info",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "span",
-          "label": "span"
-        }
-      ],
-      "default": "h2"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
-    },
-    {
-      "type": "select",
-      "id": "section_visibility",
-      "label": "t:sections-visibility.label",
-      "options": [
-        {
-          "value": "always",
-          "label": "t:sections-visibility.options.always"
-        },
-        {
-          "value": "mobile",
-          "label": "t:sections-visibility.options.mobile"
-        },
-        {
-          "value": "desktop",
-          "label": "t:sections-visibility.options.desktop"
-        }
-      ],
-      "default": "always"
     }
   ],
   "blocks": [
@@ -487,9 +327,53 @@
           "label": "t:sections.gallery.blocks.image.settings.image.label"
         },
         {
-          "type": "video",
-          "id": "video",
-          "label": "t:video-extra-functions.video_upload.label",
+          "id": "image_alignment",
+          "type": "select",
+          "options": [
+            {
+              "value": "0% 0%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__1"
+            },
+            {
+              "value": "50% 0%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__2"
+            },
+            {
+              "value": "100% 0%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__3"
+            },
+            {
+              "value": "0% 50%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__4"
+            },
+            {
+              "value": "50% 50%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__5"
+            },
+            {
+              "value": "100% 50%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__6"
+            },
+            {
+              "value": "0% 100%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__7"
+            },
+            {
+              "value": "50% 100%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__8"
+            },
+            {
+              "value": "100% 100%",
+              "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.options__9"
+            }
+          ],
+          "default": "50% 50%",
+          "label": "t:sections.split-extra-words.sections.image-with-text.settings.image_alignment.label"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "t:sections.local-extra-words.sections.media-with-text-overlay.blocks.video.label",
           "info": "t:sections.local-extra-words.sections.media-with-text-overlay.blocks.video.info"
         },
         {
@@ -518,14 +402,7 @@
           "type": "url",
           "id": "link",
           "label": "t:sections.image-with-text.blocks.image.settings.url.label",
-          "info": "t:local-230.slider_info"
-        },
-        {
-          "type": "checkbox",
-          "id": "open_in_new_window",
-          "visible_if": "{{ block.settings.link != blank }}",
-          "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
-          "default": false
+          "info": "t:sections.image-with-text.blocks.image.settings.url.info"
         },
         {
           "type": "text",
@@ -554,62 +431,18 @@
           "id": "color_hide_borders",
           "label": "t:sections.local-extra-words.settings_schema.colors.settings.hide_border",
           "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "color_hide_shadow",
-          "label": "t:local-march-update.shadows.hide",
-          "default": false
-        },
-        {
-          "type": "header",
-          "content": "t:sections.refactor_words.seo.name"
-        },
-        {
-          "type": "select",
-          "id": "seo_h_tag",
-          "label": "t:sections.refactor_words.seo.label",
-          "info": "t:sections.refactor_words.seo.info",
-          "options": [
-            {
-              "value": "h1",
-              "label": "H1"
-            },
-            {
-              "value": "h2",
-              "label": "H2"
-            },
-            {
-              "value": "h3",
-              "label": "H3"
-            },
-            {
-              "value": "h4",
-              "label": "H4"
-            },
-            {
-              "value": "span",
-              "label": "span"
-            }
-          ],
-          "default": "h3"
         }
       ]
     }
   ],
   "presets": [
-    
     {
       "name": "t:sections.local-extra-words.sections.media-with-text-overlay.name",
-      "category": "t:sections-categories.storytelling",
       "blocks": [
         { "type": "image" },
         { "type": "image" }
       ]
     }
-  ],
-  "disabled_on": {
-    "groups": ["header"]
-  }
+  ]
 }
 {% endschema %}

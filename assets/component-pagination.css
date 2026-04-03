@@ -1,3 +1,6 @@
+/*
+ *  1.0. Mixins
+*/
 .pagination a {
   display: inline-block;
   line-height: 1;
@@ -27,7 +30,7 @@
 
 .pagination {
   padding-top: var(--gutter-large);
-  text-align: start;
+  text-align: left;
 }
 @media screen and (max-width: 767px) {
   .pagination {

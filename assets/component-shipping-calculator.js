@@ -50,14 +50,14 @@ if ( typeof ShippingCalculator !== 'function' ) {
 							resultsBlock.style.display = "block";
 							resultsBlockContent.style.display = "block";
 							
-							if ( rates.length == 1 ) {
+							if(rates.length == 1) {
 								resultsBlockContentHeading.innerHTML = KROWN.settings.locales.shipping_calculator_results_heading_one;
 							} else {
-								resultsBlockContentHeading.innerHTML = KROWN.settings.locales.shipping_calculator_results_heading_multiple;
+								resultsBlockContentHeading.innerHTML = KROWN.settings.locales.shipping_calculator_results_heading_one;
 							}
 
 							rates.forEach(key => {
-								resultsBlockContentList.innerHTML += `<li>${result.shipping_rates[key].presentment_name}: ${this._formatMoney(result.shipping_rates[key].price, KROWN.settings.shop_money_format)}</li>`;
+								resultsBlockContentList.innerHTML += `<li>${result.shipping_rates[key].name}: ${this._formatMoney(result.shipping_rates[key].price, KROWN.settings.shop_money_format)}</li>`;
 							});
 
 						}

@@ -1,11 +1,11 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
 <div class="container--large container--vertical-space remove-empty-space">
 
-  <div class="contact-form grid grid--layout grid-4 grid-portable-2 grid-lap-1">
-    <div class="contact-form__the-form grid-offset-2 grid-offset-lap-1">
+  <div class="contact-form">
+    <div class="contact-form__the-form">
 
-      {%- unless section.settings.heading == blank -%}
-        <{{ section.settings.seo_h_tag }} class="h4 gutter-bottom--small" style="display:block">{{ section.settings.heading | escape }}</{{ section.settings.seo_h_tag }}>
-      {%- endunless -%}
+      <h2 class="h4 gutter-bottom--small">{{ section.settings.heading | escape }}</h2>
 
       {%- assign form_id = 'contact-' | append: section.id -%}
       {%- form 'contact', id: form_id, class: 'isolate' -%}
@@ -50,7 +50,7 @@
         {%- if section.settings.show_subject -%}
           <div class="contact-form__row">
             <label class="visually-hidden" for="{{ form_id }}-subject">{{ 'general.contact_form.subject_label' | t }}</label>
-            <input type="text" id="{{ form_id }}-subject" class="field__input" autocomplete="tel" name="contact[Title]"  value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}" placeholder="{{ 'general.contact_form.subject_label' | t }}">
+            <input type="text" id="{{ form_id }}-subject" class="field__input" autocomplete="tel" name="contact[Subject]"  value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}" placeholder="{{ 'general.contact_form.subject_label' | t }}">
           </div>
         {%- endif -%}
 
@@ -74,7 +74,7 @@
         </div>
 
         <div class="contact-form__row">
-          <button type="submit" class="button button--solid button--regular button--regular-mobile">
+          <button type="submit" class="button button--large button--solid">
             {{ 'general.contact_form.submit_label' | t }}
           </button>
         </div>
@@ -85,11 +85,9 @@
 
     {%- if section.blocks.size > 0 -%}
       {%- for block in section.blocks -%}
-      <div class="contact-form__info" {{ block.shopify_attributes }}>
-        {%- unless block.settings.title == blank -%}
-          <{{ block.settings.seo_h_tag }} class="h4 gutter-bottom--small" style="display:block">{{ block.settings.title | escape }}</{{ block.settings.seo_h_tag }}>
-        {%- endunless -%}
-        <div class="gutter--regular element--border-radius" style="border: 1px solid var(--color-borders-main)">
+      <div class="contact-form__info">
+        <h3 class="h4 gutter-bottom--small">{{ block.settings.title | escape }}</h3>
+        <div class="element--has-border gutter--regular element--border-radius">
           {{ block.settings.content }}
         </div>
       </div>
@@ -97,19 +95,13 @@
     {%- endif -%}
   </div>
 
+  
 </div>
-
-{%- if section.settings.section_background_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background-color: {{ section.settings.section_background_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
 
 {% schema %}
 	{
     "name": "t:sections.contact-form.name",
+    "tag": "section",
 		"settings": [
       {
         "type": "text",
@@ -132,39 +124,6 @@
         "id": "show_subject",
         "label": "t:sections.local-extra-words.sections.contact-form.settings.form-fields.show-subject",
         "default": false
-      },
-      {
-        "type": "header",
-        "content": "t:sections.refactor_words.seo.name"
-      },
-      {
-        "type": "select",
-        "id": "seo_h_tag",
-        "label": "t:sections.refactor_words.seo.label",
-        "info": "t:sections.refactor_words.seo.info",
-        "options": [
-          {
-            "value": "h1",
-            "label": "H1"
-          },
-          {
-            "value": "h2",
-            "label": "H2"
-          },
-          {
-            "value": "h3",
-            "label": "H3"
-          },
-          {
-            "value": "h4",
-            "label": "H4"
-          },
-          {
-            "value": "span",
-            "label": "span"
-          }
-        ],
-        "default": "h2"
       }
     ],
     "blocks": [
@@ -184,39 +143,6 @@
             "label": "t:sections.local-extra-words.sections.contact-form.blocks.contact-info.settings.content.label",
             "id": "content",
             "default": "<p>Write some useful information about your business, contact information or links to various FAQ pages.<\/p>"
-          },
-          {
-            "type": "header",
-            "content": "t:sections.refactor_words.seo.name"
-          },
-          {
-            "type": "select",
-            "id": "seo_h_tag",
-            "label": "t:sections.refactor_words.seo.label",
-            "info": "t:sections.refactor_words.seo.info",
-            "options": [
-              {
-                "value": "h1",
-                "label": "H1"
-              },
-              {
-                "value": "h2",
-                "label": "H2"
-              },
-              {
-                "value": "h3",
-                "label": "H3"
-              },
-              {
-                "value": "h4",
-                "label": "H4"
-              },
-              {
-                "value": "span",
-                "label": "span"
-              }
-            ],
-            "default": "h3"
           }
         ]
       }
@@ -224,7 +150,6 @@
     "presets": [
       {
         "name": "t:sections.contact-form.presets.name",
-        "category": "t:sections-categories.forms",
         "blocks": [
           {
             "type": "text",
@@ -242,9 +167,6 @@
           }
         ]
       }
-    ],
-    "disabled_on": {
-      "groups": ["header"]
-    }
+    ]
   }
 {% endschema %}

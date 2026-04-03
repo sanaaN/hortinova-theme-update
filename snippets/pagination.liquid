@@ -1,29 +1,18 @@
-{%- comment -%}
-  Renders pagination.
-  
-  Accepts:
-  - paginate: {Object} the paginate object.
-  
-  Usage:
-  {%- render 'pagination', paginate: paginate -%}
-{%- endcomment -%}
+{{ 'component-pagination.css' | asset_url | stylesheet_tag }}
 
 {%- if paginate.pages > 1 -%}
-
-  {{ 'component-pagination.css' | asset_url | stylesheet_tag }}
-
   <nav role="navigation">
     <ul class="pagination">
       {%- if paginate.previous -%}
         <li class="prev">
           <a href="{{ paginate.previous.url }}">
-            <span class="visually-hidden">{{ 'general.accessibility_labels.previous' | t }}</span>
+            <span class="visually-hidden">{{ 'general.accessibility_labels.prev' | t }}</span>
             <span aria-hidden="true">{%- render 'theme-symbols', icon: 'chevron' -%}</span>
           </a>
         </li>
       {%- else -%}
         <li class="prev disabled">
-          <span class="visually-hidden">{{ 'general.accessibility_labels.previous' | t }}</span>
+          <span class="visually-hidden">{{ 'general.accessibility_labels.prev' | t }}</span>
           <span aria-hidden="true">{%- render 'theme-symbols', icon: 'chevron' -%}</span>
         </li>
       {%- endif -%}
@@ -50,10 +39,10 @@
 
       <li class="mobile"><div
         {% unless paginate.next %}
-          style="margin-inline-end:-12px"
+          style="margin-right:-12px"
         {% endunless %}
         {% unless paginate.previous %}
-          style="margin-inline-start:-12px"
+          style="margin-left:-12px"
         {% endunless %}
       >
         {{ paginate.current_page }} / {{ paginate.pages }}</div>
@@ -74,5 +63,4 @@
       {%- endif -%}
     </ul>
   </nav>
-  
 {%- endif -%}

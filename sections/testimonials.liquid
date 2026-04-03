@@ -11,9 +11,9 @@
   }
 {% endstyle %}
 
-<div class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+<div class="container--large container--vertical-space remove-empty-space">
 
-  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
+  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading -%}
 
   <div id="element-{{ section.id }}" class="panel gutter--large gutter-top--xlarge gutter-bottom--xlarge">
 
@@ -78,7 +78,7 @@
   </div>
 </div>
 
-{%- render 'custom-colors', id: section.id, text: section.settings.color_text_main, background: section.settings.color_background_main, borders: section.settings.color_borders_main, shadow: section.settings.color_shadow_main, hide_borders: section.settings.color_hide_borders, hide_shadow: section.settings.color_hide_shadow -%}
+{%- render 'custom-colors', id: section.id, text: section.settings.color_text_main, background: section.settings.color_background_main, borders: section.settings.color_borders_main, hide_borders: section.settings.color_hide_borders -%}
 
 {%- unless quote_font.system? %}
   <template id="custom-font-style-{{ section.id }}">
@@ -91,37 +91,11 @@
   </script>
 {%- endunless -%}
 
-{%- if section.settings.section_background_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background-color: {{ section.settings.section_background_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_background_gradient != blank -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background: {{ section.settings.section_background_gradient }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_heading_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      --color-text-main: {{ section.settings.section_heading_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
-
 {% schema %}
 {
   "name": "t:sections.testimonials.name",
   "class": "mount-css-slider",
   "settings": [
-    {
-      "type": "header",
-      "content": "t:local-march-update.labels.heading"
-    },
     {
       "type": "text",
       "id": "heading",
@@ -133,26 +107,6 @@
       "id": "subheading",
       "label": "t:sections.local-extra-words.sections.headings.subheading",
       "default": "Show your clients' thoughts"
-    },
-    {
-      "type": "select",
-      "id": "section_heading_layout",
-      "label": "t:sections.rich-text.settings.text_alignment.label",
-      "options": [
-        {
-          "value": "section-heading--left",
-          "label": "t:sections.rich-text.settings.text_alignment.options__1.label"
-        },
-        {
-          "value": "section-heading--center",
-          "label": "t:sections.rich-text.settings.text_alignment.options__2.label"
-        }
-      ],
-      "default": "section-heading--left"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.main-article.blocks.content.name"
     },
     {
       "type": "header",
@@ -222,82 +176,10 @@
       "default": "rgba(0,0,0,0)"
     },
     {
-      "type": "color",
-      "id": "color_shadow_main",
-      "label": "t:local-march-update.shadows.label",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
       "type": "checkbox",
       "id": "color_hide_borders",
       "label": "t:sections.local-extra-words.settings_schema.colors.settings.hide_border",
       "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "color_hide_shadow",
-      "label": "t:local-march-update.shadows.hide",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "t:local-march-update.labels.section_design"
-    },
-    {
-      "type": "color",
-      "id": "section_background_color",
-      "label": "t:sections.local-extra-words.settings_schema.product-card.badges.custom_badges.color",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "color_background",
-      "id": "section_background_gradient",
-      "label": "t:local-230.background_gradient"
-    },
-    {
-      "type": "color",
-      "id": "section_heading_color",
-      "label": "t:local-223.heading_text_color",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "checkbox",
-      "id": "remove_margin",
-      "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "t:sections.refactor_words.seo.name"
-    },
-    {
-      "type": "select",
-      "id": "seo_h_tag",
-      "label": "t:sections.refactor_words.seo.label",
-      "info": "t:sections.refactor_words.seo.info",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "span",
-          "label": "span"
-        }
-      ],
-      "default": "h2"
     }
   ],
   "blocks": [
@@ -334,16 +216,11 @@
   "presets": [
     {
       "name": "t:sections.local-extra-words.sections.testimonials.name",
-      "category": "t:sections-categories.brand-trust",
       "blocks": [
-        { "type": "testimonial" },
         { "type": "testimonial" },
         { "type": "testimonial" }
       ]
     }
-  ],
-  "disabled_on": {
-    "groups": ["header"]
-  }
+  ]
 }
 {% endschema %}

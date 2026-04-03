@@ -1,3 +1,6 @@
+/*
+ *  1.0. Mixins
+*/
 .cart-section {
   display: grid;
   grid-template-columns: 3fr 1.4fr;
@@ -16,30 +19,14 @@
 .cart-section aside {
   position: relative;
 }
-.cart-section--empty shipping-calculator,
-.cart-section--empty product-recommendations,
-.cart-section--empty aside {
-  display: none;
-}
-.cart-section--empty .cart-holder {
-  border: none;
-}
-.cart-section--empty .cart-holder .cart-form__items {
-  padding: 0;
-}
 
 .cart__subtotal-widget {
   padding: var(--gutter-regular);
   position: sticky;
   top: 1.25rem;
-}
-html[dir=rtl] .cart__subtotal-widget {
-  right: 0;
-}
-html[dir=ltr] .cart__subtotal-widget {
   left: 0;
 }
-.cart__subtotal-widget .button:not(#cartDiscountSubmit) {
+.cart__subtotal-widget .button {
   width: 100%;
 }
 
@@ -71,8 +58,8 @@ html[dir=ltr] .cart__subtotal-widget {
 }
 @media screen and (max-width: 767px) {
   .cart-form-item--layout {
-    padding-inline-start: 0;
-    padding-inline-end: 0;
+    padding-left: 0;
+    padding-right: 0;
     row-gap: 0;
     grid-template-columns: 6.25rem 1fr;
     grid-template-rows: max-content max-content;
@@ -81,6 +68,11 @@ html[dir=ltr] .cart__subtotal-widget {
 }
 .cart-form-item--layout .cart-item__thumbnail {
   grid-area: thumbnail;
+}
+@media screen and (max-width: 767px) {
+  .cart-form-item--layout .cart-item__thumbnail {
+    align-self: stretch;
+  }
 }
 .cart-form-item--layout .cart-form-item__price-title-variants {
   grid-area: price-title-variants;

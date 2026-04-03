@@ -1,3 +1,6 @@
+/*
+ *  1.0. Mixins
+*/
 .article--indent-for-social {
   position: relative;
   display: grid;
@@ -22,11 +25,6 @@
 .article__meta__sticky {
   position: sticky;
   top: 1.25rem;
-}
-html[dir=rtl] .article__meta__sticky {
-  right: 0;
-}
-html[dir=ltr] .article__meta__sticky {
   left: 0;
 }
 .article__meta-tags .tags {

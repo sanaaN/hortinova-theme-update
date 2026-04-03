@@ -19,20 +19,6 @@ if ( typeof ProductQuantity !== 'function' ) {
 				qtyPlus.classList.add('disabled');
 			}
 
-			qty.addEventListener('change', (e)=>{
-				const currentQty = parseInt(qty.value);
-				if ( parseInt(qty.value) - 1 < qtyMin ) {
-					qtyMinus.classList.add('disabled');
-				} else {
-					qtyMinus.classList.remove('disabled');
-				}
-				if ( parseInt(qty.value) + 1 > qtyMax ) {
-					qtyPlus.classList.add('disabled');
-				} else {
-					qtyPlus.classList.remove('disabled');
-				}
-			});
-
 			qtyMinus.addEventListener('click', (e)=>{
 				e.preventDefault();
 				if ( ! qtyMinus.classList.contains('disabled') ) {

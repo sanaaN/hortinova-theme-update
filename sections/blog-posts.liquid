@@ -1,14 +1,9 @@
 {{ 'component-blog-item.css' | asset_url | stylesheet_tag }}
 
-<div id="section-{{ section.id }}" class="container--large remove-empty-space
-  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
-  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
-  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
-  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
-">
+<div class="container--large  container--vertical-space">
 
   {%- if section.settings.title != blank -%}
-    {%- render 'section-heading', heading: section.settings.title, subheading: section.settings.subheading, button: section.settings.show_view_all, button_label: 'blog.view_all_articles', link: blogs[section.settings.blog].url, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
+    {%- render 'section-heading', heading: section.settings.title, subheading: section.settings.subheading, button: section.settings.show_view_all, button_label: 'blog.view_all_articles', link: blogs[section.settings.blog].url -%}
   {%- endif -%}
  
   {%- assign post_limit = 3 -%}
@@ -39,35 +34,7 @@
 
   {%- endif -%}
 
-  {%- if section.settings.show_view_all and section.settings.section_heading_layout contains 'center' -%}
-    <div class="gutter-top--large align-content align-content--horizontal-center">
-      <a class="button button--outline button--regular" href="{{ blogs[section.settings.blog].url }}">{{ 'blog.view_all_articles' | t }}</a>
-    </div>
-  {%- endif -%}
-
 </div>
-
-{%- if section.settings.section_background_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background-color: {{ section.settings.section_background_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_background_gradient != blank -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      background: {{ section.settings.section_background_gradient }};
-    }
-  {% endstyle %}
-{%- endif -%}
-{%- if section.settings.section_heading_color != "rgba(0,0,0,0)" -%}
-  {% style %}
-    #shopify-section-{{ section.id }} {
-      --color-text-main: {{ section.settings.section_heading_color }};
-    }
-  {% endstyle %}
-{%- endif -%}
 
 {% schema %}
   {
@@ -123,10 +90,6 @@
     ],
     "settings": [
       {
-        "type": "header",
-        "content": "t:local-march-update.labels.heading"
-      },
-      {
         "type": "text",
         "id": "title",
         "label": "t:sections.blog-posts.settings.title.label",
@@ -137,32 +100,6 @@
         "id": "subheading",
         "label": "t:sections.local-extra-words.sections.headings.subheading",
         "default": "Showcase your best products"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_view_all",
-        "label": "t:sections.blog-posts.settings.show_view_all.label",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "section_heading_layout",
-        "label": "t:sections.rich-text.settings.text_alignment.label",
-        "options": [
-          {
-            "value": "section-heading--left",
-            "label": "t:sections.rich-text.settings.text_alignment.options__1.label"
-          },
-          {
-            "value": "section-heading--center",
-            "label": "t:sections.rich-text.settings.text_alignment.options__2.label"
-          }
-        ],
-        "default": "section-heading--left"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.main-article.blocks.content.name"
       },
       {
         "type": "blog",
@@ -207,110 +144,20 @@
         "default": "1.33333"
       },
       {
-        "type": "header",
-        "content": "t:local-march-update.labels.section_design"
-      },
-      {
-        "type": "color",
-        "id": "section_background_color",
-        "label": "t:sections.local-extra-words.settings_schema.product-card.badges.custom_badges.color",
-        "default": "rgba(0,0,0,0)"
-      },
-      {
-        "type": "color_background",
-        "id": "section_background_gradient",
-        "label": "t:local-230.background_gradient"
-      },
-      {
-        "type": "color",
-        "id": "section_heading_color",
-        "label": "t:sections.local-extra-words.settings_schema.product-card.badges.custom_badges.text_color",
-        "default": "rgba(0,0,0,0)"
-      },
-      {
         "type": "checkbox",
-        "id": "descrease_margin",
-        "visible_if": "{{ section.settings.remove_margin == false }}",
-        "label": "t:theme_blocks.descrease_top_margin",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "remove_margin",
-        "visible_if": "{{ section.settings.descrease_margin == false }}",
-        "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "t:sections.refactor_words.seo.name"
-      },
-      {
-        "type": "select",
-        "id": "seo_h_tag",
-        "label": "t:sections.refactor_words.seo.label",
-        "info": "t:sections.refactor_words.seo.info",
-        "options": [
-          {
-            "value": "h1",
-            "label": "H1"
-          },
-          {
-            "value": "h2",
-            "label": "H2"
-          },
-          {
-            "value": "h3",
-            "label": "H3"
-          },
-          {
-            "value": "h4",
-            "label": "H4"
-          },
-          {
-            "value": "span",
-            "label": "span"
-          }
-        ],
-        "default": "h2"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.refactor_words.announcement-bar.visibility.label"
-      },
-      {
-        "type": "select",
-        "id": "section_visibility",
-        "label": "t:sections-visibility.label",
-        "options": [
-          {
-            "value": "always",
-            "label": "t:sections-visibility.options.always"
-          },
-          {
-            "value": "mobile",
-            "label": "t:sections-visibility.options.mobile"
-          },
-          {
-            "value": "desktop",
-            "label": "t:sections-visibility.options.desktop"
-          }
-        ],
-        "default": "always"
+        "id": "show_view_all",
+        "label": "t:sections.blog-posts.settings.show_view_all.label",
+        "default": true
       }
     ],    
     "presets": [
       {
         "name": "t:sections.blog-posts.presets.name",
-        "category": "t:sections-categories.content",
         "blocks": [
           {"type": "info"},
           {"type": "title"}
         ]
       }
-    ],
-    "disabled_on": {
-      "groups": ["header"]
-    }
+    ]
   }
 {% endschema %}

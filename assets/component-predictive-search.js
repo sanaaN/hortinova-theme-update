@@ -68,7 +68,7 @@ if ( typeof SearchForm !== 'function' ) {
 
 			this.a11yIndex = -1;
 
-			fetch(`${KROWN.settings.routes.predictive_search_url}?q=${encodeURIComponent(query)}&section_id=helper-predictive-search`)
+			fetch(`${KROWN.settings.routes.predictive_search_url}?q=${encodeURIComponent(query)}&resources[type]=${this.dataset.resourceType}&resources[limit]=4&section_id=helper-predictive-search`)
 				.then(response=>{
 					if (!response.ok) {
 						var error = new Error(response.status);

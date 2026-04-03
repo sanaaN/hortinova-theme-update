@@ -1,9 +1,11 @@
-.scrolling-text {
-  --scrolling-text-height: var(--scrolling-text-size);
+/*
+ *  1.0. Mixins
+*/
+.marquee {
   color: var(--color-text-main);
   border: 0;
   width: 100%;
-  height: var(--scrolling-text-height);
+  height: 6.25rem;
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
@@ -13,49 +15,48 @@
   justify-content: flex-start;
 }
 @media screen and (max-width: 1023px) {
-  .scrolling-text {
-    --scrolling-text-height: calc(var(--scrolling-text-size) * 0.8);
+  .marquee {
+    height: 5rem;
   }
 }
 @media screen and (max-width: 767px) {
-  .scrolling-text {
-    --scrolling-text-height: calc(var(--scrolling-text-size) * 0.6);
+  .marquee {
+    height: 3.75rem;
   }
 }
-.scrolling-text__container {
+.marquee-direction--right {
+  text-align: right;
+}
+.marquee-direction--right .marquee__container {
+  animation-direction: reverse !important;
+}
+.marquee--pause-on-mouseover .marquee__container:hover {
+  animation-play-state: paused;
+}
+.marquee__container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  animation: marquee var(--animation-speed) linear infinite forwards normal;
+  will-change: transform;
+  gap: 15rem;
 }
-.scrolling-text__container > span {
-  direction: ltr;
-  display: inline-block;
-  padding-left: calc(var(--scrolling-text-height) * var(--scrolling-text-space));
-  padding-right: calc(var(--scrolling-text-height) * var(--scrolling-text-space));
+@media screen and (max-width: 1023px) {
+  .marquee__container {
+    gap: 5rem;
+  }
 }
-html[dir=rtl] .scrolling-text__container > span > * {
-  direction: rtl;
-}
-.scrolling-text__text {
-  font-size: var(--scrolling-text-font-size);
-}
-.scrolling-text__image {
-  height: 0;
-  width: 1px;
-  position: relative;
-}
-.scrolling-text__image .lazy-image {
-  position: absolute;
-  width: calc(var(--scrolling-text-height) * 0.75);
-  height: calc(var(--scrolling-text-height) * 0.75);
-  padding-top: 0 !important;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.scrolling-text p {
+.marquee__container p {
   margin-bottom: 0;
 }
-.scrolling-text a {
+.marquee__container a {
   text-decoration: underline;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }

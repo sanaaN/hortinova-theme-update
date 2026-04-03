@@ -1,3 +1,6 @@
+/*
+ *  1.0. Mixins
+*/
 .testimonials--center .testimonial {
   padding: 0 20%;
 }
@@ -12,7 +15,7 @@
   }
 }
 .testimonials--left .testimonial {
-  padding-inline-end: 20%;
+  padding-right: 20%;
 }
 .testimonial__quote {
   font-size: var(--font-size);
@@ -51,7 +54,7 @@
   background: rgba(0, 0, 0, 0.06);
 }
 .testimonial__avatar-image + .testimonial__avatar-info span {
-  text-align: start !important;
+  text-align: left !important;
 }
 .testimonial__avatar-image img {
   border-radius: 50%;
@@ -62,7 +65,7 @@
 .testimonial__avatar-info span {
   display: block;
   clear: both;
-  text-align: start;
+  text-align: left;
 }
 .testimonials--center .testimonial__avatar-info span {
   text-align: center;
